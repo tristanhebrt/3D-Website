@@ -1,18 +1,15 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html, body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: black;
+body {
   display: grid;
   grid-template-rows: auto 1fr; /* Header takes its own space, rest is flexible */
   grid-template-columns: 1fr;
+  grid-template-areas:
+    "header"
+    "main";
+  
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  background-color: black;
 }
 
 header {
@@ -75,6 +72,20 @@ nav ul li p:hover {
   text-shadow: 0px 0px 20px red;
 }
 
+/* Main */
+main {
+  display: grid;
+  justify-items: center;  /* Horizontally center items */
+  align-items: center;    /* Vertically center items */
+  height: 100vh;          /* Full viewport height */
+}
+
+main a {
+  font-size: 20px;
+  letter-spacing: 3px;
+  z-index: 11;
+}
+
 
 /* Canvas should occupy the second row, but stay behind other elements */
 #container3D canvas {
@@ -88,6 +99,25 @@ nav ul li p:hover {
 }
 
 /* Place the switch in the second row, at the top right corner */
+#trackingSwitchContainer {
+  list-style: none; /* Remove bullet points */
+  display: grid; /* Set display to grid */
+  grid-template-columns: repeat(1, auto); /* Set a specific number of columns */
+  gap: 10px; /* Adds space between the items */
+  padding: 0;
+  margin: 0;
+  margin-top: 50px;
+  
+  grid-row: auto;
+  grid-column: 2;
+}
+
+#tracking {
+  font-size: 20px;
+  letter-spacing: 3px;
+  z-index: 11;
+}
+
 .switch {
   position: relative;
   display: inline-block;
