@@ -66,47 +66,11 @@ const trackingSwitch = document.getElementById('trackingSwitch');
 // Variables for smooth transition
 let targetPosition = new THREE.Vector3(0, 0, 0);
 let targetRotation = new THREE.Euler(Math.PI / 0.54, Math.PI, 0);
+let rotationDampening = 0.05; // Adjust this value for smoothness
 let transitionSpeed = 0.03; // Adjust this value for a smoother/slower transition
 
 // True if the object follows the cursor
 let track = trackingSwitch.checked; // Initially set based on the checkbox state
-
-// Event listener to toggle tracking on/off
-trackingSwitch.addEventListener('change', function () {
-    track = trackingSwitch.checked; // Update tracking mode based on the switch
-    controls.enabled = !track; // Enable OrbitControls when tracking is off
-
-    if (!track && object) {
-        // Reset the target position and rotation for smooth transition
-        targetPosition.set(0, 0, 0);
-        targetRotation.set(Math.PI / 0.54, Math.PI, 0); // Reset rotation
-        
-        // Reset camera position
-        camera.position.set(0, 0, 0.8); // Reset camera to initial position
-        controls.target.set(0, 0, 0); // Reset controls target
-        controls.update(); // Update controls to reflect the change
-    }
-});
-
-// Render the scene in a loop
-function animate() {
-    requestAnimationFrame(animate);
-
-    if (object) {
-        if (track) {
-            // Follow the mouse when tracking is enabled
-            object.rotation.y = 1.6 + mouseX / window.innerWidth * 3;
-            object.rotation.x = -1.7 + mouseY * 2.5 / window.innerHeight;
-        } else {
-            // Smoothly transition the object to the target position and rotation
-            object.position.lerp(targetPosition, transitionSpeed);
-            object.rotation.x += (targetRotation.x - object.rotation.x) * transitionSpeed;
-            object.rotation.y += (targetRotation.y - object.rotation.y) * transitionSpeed;
-        }
-    }
-
-    renderer.render(scene, camera);
-}
 
 // Mouse movement listener
 let mouseX = window.innerWidth / 2;
@@ -115,6 +79,44 @@ document.onmousemove = (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
 };
+
+// Render the scene in a loop
+function animate() {
+    requestAnimationFrame(animate);
+
+    if (object) {
+        if (track) {
+            // Calculate target rotation based on mouse position
+            targetRotation.y = 1.6 + (mouseX / window.innerWidth) * 3;
+            targetRotation.x = -1.7 + (mouseY * 2.5 / window.innerHeight);
+            
+            // Smoothly interpolate the object's rotation towards the target rotation
+            object.rotation.x += (targetRotation.x - object.rotation.x) * rotationDampening;
+            object.rotation.y += (targetRotation.y - object.rotation.y) * rotationDampening;
+        } else {
+            // Smoothly transition the object to the target position and rotation
+            object.position.lerp(targetPosition, transitionSpeed);
+            object.rotation.x += (targetRotation.x - object.rotation.x) * transitionSpeed;
+            object.rotation.y += (targetRotation.y - object.rotation.y) * transitionSpeed;
+        }
+    }
+    renderer.render(scene, camera);
+}
+
+// Event listener to toggle tracking on/off
+trackingSwitch.addEventListener('change', function () {
+    track = trackingSwitch.checked; // Update tracking mode based on the switch
+    controls.enabled = !track; // Enable OrbitControls when tracking is off
+
+    // Reset the target position and rotation for smooth transition
+    targetPosition.set(0, 0, 0);
+    targetRotation.set(Math.PI / 54, Math.PI, 0); // Reset rotation
+    
+    // Reset camera position
+    camera.position.set(0, 0, 0.8); // Reset camera to initial position
+    controls.target.set(0, 0, 0); // Reset controls target
+    controls.update(); // Update controls to reflect the change
+});
 
 // Resize event listener
 window.addEventListener("resize", function () {
