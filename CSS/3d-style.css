@@ -1,85 +1,137 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html, body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: black;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: black;
+  display: grid;
+  grid-template-rows: auto 1fr; /* Header takes its own space, rest is flexible */
+  grid-template-columns: 1fr;
 }
 
 header {
-    color: white;
-    letter-spacing: 4px;
-    text-align: center;
-    position: relative; /* Position the header relative to the canvas */
-
-    padding: 50px;
-    margin: 50px;
-
-    z-index: 10; /* Ensure header is on top */
+  color: white;
+  letter-spacing: 4px;
+  text-align: center;
+  padding: 50px;
+  margin: 10px;
+  grid-row: 1; /* Header occupies the first row */
+  z-index: 10;
 }
 
+.text-container {
+  display: grid;
+  justify-items: center; /* Centers items horizontally */
+  align-items: center;   /* Centers items vertically */
+  grid-template-columns: auto auto; /* Two columns for h1 and anchor (or more if needed) */
+  gap: 20px; /* Optional: Adds space between items */
+  padding-bottom: 20px; /* Keeps bottom padding for spacing */
+}
+
+.text-container h1 {
+  grid-column: 1; /* Occupy the first column */
+}
+
+.text-container a {
+  grid-column: 2; /* Occupy the second column */
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+
+#gallery-btn {
+  margin-left: 40px;
+}
+
+/* Nav */
+nav ul {
+  list-style: none; /* Remove bullet points */
+  display: grid; /* Set display to grid */
+  grid-template-columns: repeat(1, auto); /* Set a specific number of columns */
+  gap: 10px; /* Adds space between the items */
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  text-align: center; /* Center text within each grid item */
+}
+
+nav ul li p {
+  text-decoration: none;
+  color: white; /* Adjust color as needed */
+  transition: transform 0.5s ease;
+}
+
+nav ul li p:hover {
+  transform: scale(1.2);
+  text-shadow: 0px 0px 20px red;
+}
+
+
+/* Canvas should occupy the second row, but stay behind other elements */
 #container3D canvas {
-    width: 100vw !important;
-    height: 100vh !important;
-    position: absolute;
-    top: 0;
-    left: 0;
+  grid-row: 2; /* Canvas in the second row */
+  width: 100vw !important;
+  height: 100vh !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
 
-    z-index: 1; /* Make sure the canvas is behind the switch */
-  }
+/* Place the switch in the second row, at the top right corner */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  z-index: 11;
+  grid-row: 2; /* It stays within the main area, on top of the canvas */
+  justify-self: end; /* Align to the right of the container */
+  margin: 10px;
+}
 
-  /* Tracking Switch */
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
 
-    z-index: 11; /* Make sure the switch is above the canvas */
-  }
-  
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 34px;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-  }
-  
-  input:checked + .slider {
-    background-color: #2196F3;
-  }
-  
-  input:checked + .slider:before {
-    transform: translateX(26px);
-  }
-  
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: rgba(255, 0, 0, 0.178);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
