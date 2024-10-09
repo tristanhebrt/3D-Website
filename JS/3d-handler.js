@@ -10,7 +10,7 @@ const scene = new THREE.Scene();
 
 // Create a new camera
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 0, 0.8); // Set the initial camera position
+camera.position.set(0, 0, 10); // Set the initial camera position
 
 // Instantiate a new renderer and set its size
 const renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -21,8 +21,8 @@ document.getElementById("container3D").appendChild(renderer.domElement);
 
 // OrbitControls for moving the camera
 let controls = new OrbitControls(camera, renderer.domElement);
-controls.minDistance = 0.5; // Minimum distance for camera zoom
-controls.maxDistance = 1.5; // Maximum distance for camera zoom
+controls.minDistance = 5; // Minimum distance for camera zoom
+controls.maxDistance = 20; // Maximum distance for camera zoom
 controls.enabled = false;  // Initially disabled, will be controlled by tracking switch
 
 // Set the object to render
@@ -31,15 +31,15 @@ let object;
 // Load the file using GLTFLoader
 const loader = new GLTFLoader();
 loader.load(
-    'ASSETS/3d-face.gltf',
+    'ASSETS/kk2-logo.gltf',
     function (gltf) {
         object = gltf.scene;
 
         // Adjust the position and rotation
         object.position.set(0, 0, 0);
         object.rotation.y = Math.PI;
-        object.rotation.x = Math.PI / 0.54;
-        object.scale.set(2, 2, 2); // Scale the model
+        object.rotation.x = 1;
+        object.scale.set(1, 1, 1); // Scale the model
 
         scene.add(object); // Add the object to the scene
     },
@@ -53,7 +53,7 @@ loader.load(
 
 // Add lights to the scene
 const topLight = new THREE.DirectionalLight(0xffffff, 1);
-topLight.position.set(500, 500, 500);
+topLight.position.set(0, 100, 0);
 topLight.castShadow = true;
 scene.add(topLight);
 
@@ -71,7 +71,7 @@ function animate() {
         if (track) {
             // Calculate target rotation based on mouse position
             targetRotation.y = 1.6 + (mouseX / window.innerWidth) * 3;
-            targetRotation.x = -1.7 + (mouseY * 2.5 / window.innerHeight);
+            targetRotation.x = -1 + (mouseY * 2.5 / window.innerHeight);
             
             // Smoothly interpolate the object's rotation towards the target rotation
             object.rotation.x += (targetRotation.x - object.rotation.x) * rotationDampening;
@@ -102,10 +102,10 @@ trackingSwitch.addEventListener('change', function () {
 
     // Reset the target position and rotation for smooth transition
     targetPosition.set(0, 0, 0);
-    targetRotation.set(Math.PI / 54, Math.PI, 0); // Reset rotation
+    targetRotation.set(0, 3.2, 0); // Reset rotation
     
     // Reset camera position
-    camera.position.set(0, 0, 0.8); // Reset camera to initial position
+    camera.position.set(0, 0, 10); // Reset camera to initial position
     controls.target.set(0, 0, 0); // Reset controls target
     controls.update(); // Update controls to reflect the change
 });

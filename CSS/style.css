@@ -5,7 +5,7 @@
 }
 
 html, body {
-    height: 100%;
+    height: 100%; /* Ensure the body covers the full height of the viewport */
     touch-action: none;
 }
 
@@ -18,7 +18,8 @@ body {
         "main"   /* Main content area */
         "footer"; /* Footer area */
   
-    overflow: hidden; /* Prevent overflow */
+    overflow-x: hidden; /* Prevent horizontal overflow */
+    overflow-y: auto; /* Allow vertical scrolling */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
     background-color: black; /* Use black background */
@@ -65,10 +66,12 @@ nav ul li p:hover {
 main {
     grid-area: main; /* Assign main to the main area */
     display: flex; /* Use flexbox for the main area */
-    justify-content: center; /* Center items horizontally */
-    align-items: center; /* Center items vertically */
+    flex-direction: column; /* Arrange children vertically */
+    justify-content: flex-start; /* Align items to the top */
+    align-items: center; /* Center items horizontally */
     position: relative; /* Positioning context for child elements */
-    height: 100%; /* Allow it to fill available space */
+    height: auto; /* Allow height to adjust based on content */
+    margin-bottom: 100px;
 }
 
 .text-container {
@@ -94,7 +97,7 @@ main {
 /* Tracking Switch */
 #trackingSwitchContainer {
     position: absolute; /* Set to absolute positioning */
-    top: 80%; /* Center it vertically */
+    top: 0%; /* Center it vertically */
     right: 400px; /* Move it to the right side */
     transform: translateY(-50%); /* Adjust to center vertically */
     z-index: 10; /* Ensure it stays above other elements */
@@ -114,7 +117,6 @@ main {
     display: inline-block;
     width: 60px;
     height: 34px;
-    grid-row: 2; /* It stays within the main area, on top of the canvas */
     justify-self: end; /* Align to the right of the container */
     margin: 10px;
     z-index: 10;
@@ -192,18 +194,6 @@ input:checked + .slider:before {
     transform: translate(-50%, -50%); /* Center the circle using transform */
 }
 
-/*====================Footer Area====================*/
-footer {
-    grid-area: footer; /* Assign footer to the footer area */
-    color: white;
-    letter-spacing: 4px;
-    text-align: center;
-    padding: 0px;
-    margin: 10px;
-    grid-column: 1;
-    z-index: 10; /* Keep it above other content */
-}
-
 /*====================3D Gallery Area====================*/
 /* Keyframes for spinning animation */
 @keyframes spin {
@@ -247,3 +237,4 @@ footer {
 #drag-container img:hover, #drag-container video:hover {
     filter: drop-shadow(0 0 15px whitesmoke); /* On hover effect */
 }
+
