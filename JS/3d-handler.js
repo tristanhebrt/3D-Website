@@ -31,7 +31,7 @@ let object;
 // Load the file using GLTFLoader
 const loader = new GLTFLoader();
 loader.load(
-    'ASSETS/kk2-logo.gltf',
+    'ASSETS/3dLogo/kk2-logo.glb',
     function (gltf) {
         object = gltf.scene;
 
@@ -53,7 +53,7 @@ loader.load(
 
 // Add lights to the scene
 const topLight = new THREE.DirectionalLight(0xffffff, 1);
-topLight.position.set(0, 100, 0);
+topLight.position.set(0, 0, 100);
 topLight.castShadow = true;
 scene.add(topLight);
 
