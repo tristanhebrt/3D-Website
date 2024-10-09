@@ -48,7 +48,7 @@ nav ul li p {
 
 nav ul li p:hover {
   transform: scale(1.2);
-  text-shadow: 0px 0px 20px red;
+  text-shadow: 0px 0px 20px rgb(255, 255, 255);
 }
 
 /*====================Main Area====================*/
@@ -161,6 +161,18 @@ input:checked + .slider:before {
   left: 0;
 
   z-index: 1; /* Behind other elements */
+}
+
+.circle-overlay {
+  position: absolute; /* Position the circle absolutely */
+  top: 50%; /* Position at the vertical center */
+  left: 50%; /* Position at the horizontal center */
+  width: 1000px; /* Set the desired width */
+  height: 1000px; /* Set the desired height */
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 0, 0, 0) 50%); /* Radial gradient for fading edges */
+  border-radius: 50%; /* Make it circular */
+  z-index: 0; /* Position below the container */
+  transform: translate(-50%, -50%); /* Center the circle using transform */
 }
 
 /*====================Footer Area====================*/
