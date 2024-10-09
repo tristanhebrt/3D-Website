@@ -1,3 +1,4 @@
+/*====================Body====================*/
 body {
   display: grid;
   grid-template-rows: auto 1fr auto; /* Define rows for header, main, footer */
@@ -163,6 +164,7 @@ input:checked + .slider:before {
   z-index: 1; /* Behind other elements */
 }
 
+/*Circle*/
 .circle-overlay {
   position: absolute; /* Position the circle absolutely */
   top: 50%; /* Position at the vertical center */
