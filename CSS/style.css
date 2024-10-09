@@ -213,7 +213,16 @@ input:checked + .slider:before {
 }
 
 /* 3D Drag Container */
-#drag-container, #spin-container {
+.drag-container{
+    position: relative; /* Set to relative for stacking */
+    display: flex; /* Use flex display */
+    margin: 20px auto; /* Center horizontally and add space */
+    transform-style: preserve-3d;
+    transform: rotateX(-10deg);
+    height: auto; /* Allow height to adjust based on content */
+} 
+
+.spin-container {
     position: relative;
     display: flex; /* Use flex display */
     margin: auto; /* Center horizontally */
@@ -221,7 +230,8 @@ input:checked + .slider:before {
     transform: rotateX(-10deg);
 }
 
-#drag-container img, #drag-container video {
+.drag-container img, .drag-container video,
+.spin-container img, .spin-container video {
     transform-style: preserve-3d;
     position: absolute;
     left: 0;
@@ -234,7 +244,19 @@ input:checked + .slider:before {
     filter: drop-shadow(0 0 8px white); /* Modern alternative to box-shadow */
 }
 
-#drag-container img:hover, #drag-container video:hover {
+.drag-container img:hover, .drag-container video:hover,
+.spin-container img:hover, .spin-container video:hover {
     filter: drop-shadow(0 0 15px whitesmoke); /* On hover effect */
 }
 
+/*====================Footer Area====================*/
+footer {
+    grid-area: footer; /* Assign footer to the footer area */
+    color: white;
+    letter-spacing: 4px;
+    text-align: center;
+    padding: 0px;
+    margin: 10px;
+    grid-column: 1;
+    z-index: 10; /* Keep it above other content */
+}
