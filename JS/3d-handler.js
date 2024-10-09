@@ -31,7 +31,7 @@ let object;
 // Load the file using GLTFLoader
 const loader = new GLTFLoader();
 loader.load(
-    'ASSETS/3dLogo/kk2-logo.glb',
+    'ASSETS/3dLogo/kk2-logo-2.glb',
     function (gltf) {
         object = gltf.scene;
 
