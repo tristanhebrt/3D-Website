@@ -63,23 +63,6 @@ scene.add(ambientLight);
 // Get the tracking switch element
 const trackingSwitch = document.getElementById('trackingSwitch');
 
-// Variables for smooth transition
-let targetPosition = new THREE.Vector3(0, 0, 0);
-let targetRotation = new THREE.Euler(Math.PI / 0.54, Math.PI, 0);
-let rotationDampening = 0.05; // Adjust this value for smoothness
-let transitionSpeed = 0.03; // Adjust this value for a smoother/slower transition
-
-// True if the object follows the cursor
-let track = trackingSwitch.checked; // Initially set based on the checkbox state
-
-// Mouse movement listener
-let mouseX = window.innerWidth / 2;
-let mouseY = window.innerHeight / 2;
-document.onmousemove = (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-};
-
 // Render the scene in a loop
 function animate() {
     requestAnimationFrame(animate);
@@ -103,6 +86,15 @@ function animate() {
     renderer.render(scene, camera);
 }
 
+// Variables for smooth transition
+let targetPosition = new THREE.Vector3(0, 0, 0);
+let targetRotation = new THREE.Euler(Math.PI / 0.54, Math.PI, 0);
+let rotationDampening = 0.05; // Adjust this value for smoothness
+let transitionSpeed = 0.03; // Adjust this value for a smoother/slower transition
+
+// True if the object follows the cursor
+let track = trackingSwitch.checked; // Initially set based on the checkbox state
+
 // Event listener to toggle tracking on/off
 trackingSwitch.addEventListener('change', function () {
     track = trackingSwitch.checked; // Update tracking mode based on the switch
@@ -117,6 +109,14 @@ trackingSwitch.addEventListener('change', function () {
     controls.target.set(0, 0, 0); // Reset controls target
     controls.update(); // Update controls to reflect the change
 });
+
+// Mouse movement listener
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+document.onmousemove = (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+};
 
 // Resize event listener
 window.addEventListener("resize", function () {
