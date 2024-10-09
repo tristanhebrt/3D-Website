@@ -98,7 +98,7 @@ let track = trackingSwitch.checked; // Initially set based on the checkbox state
 // Event listener to toggle tracking on/off
 trackingSwitch.addEventListener('change', function () {
     track = trackingSwitch.checked; // Update tracking mode based on the switch
-    controls.enabled = !track; // Enable OrbitControls when tracking is off
+    // controls.enabled = !track; // Enable OrbitControls when tracking is off (disabled)
 
     // Reset the target position and rotation for smooth transition
     targetPosition.set(0, 0, 0);
