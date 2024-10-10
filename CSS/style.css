@@ -117,10 +117,38 @@ main {
     position: relative; /* Positioning context for child elements */
     height: auto; /* Allow height to adjust based on content */
     margin-bottom: 100px;
-    margin-top: 70px;
 }
 
 .text-container {
+    display: grid;
+    grid-area: main;
+    grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
+    grid-template-rows: auto; /* Rows will adjust automatically */
+    margin-left: 20%;
+
+    color: white;
+    letter-spacing: 4px;
+}
+
+.text-container h1{
+    font-size: 50px;
+    font-weight: 400;
+}
+
+.text-container p{
+    grid-row: 2;
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.text-container iframe {
+    grid-row: 3;
+    margin-top: 30px;
+    width: 800px;
+    height: 400px;
+}
+
+.header-text-container {
     display: grid;
     justify-items: center; /* Centers items horizontally */
     align-items: center;   /* Centers items vertically */
@@ -129,11 +157,11 @@ main {
     padding-bottom: 20px; /* Keeps bottom padding for spacing */
 }
 
-.text-container h1 {
+.header-text-container h1 {
     grid-column: 1; /* Occupy the first column */
 }
 
-.text-container a {
+.header-text-container a {
     grid-column: 2; /* Occupy the second column */
     color: white;
     text-decoration: none;
