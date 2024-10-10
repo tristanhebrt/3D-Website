@@ -17,6 +17,7 @@ body {
     grid-template-areas:
         "header" /* Header area */
         "main"   /* Main content area */
+        "gallery" /* Picture showcase area */
         "footer"; /* Footer area */
   
     overflow-x: hidden; /* Prevent horizontal overflow */
@@ -275,7 +276,7 @@ input:checked + .slider:before {
     text-shadow: 0px 0px 20px rgb(255, 255, 255);
 }
 
-/*====================Gallery Selection Area====================*/
+/*Gallery Selection*/
 .gallerySelectionContainer {
     grid-area: main;
     color: white;
@@ -313,6 +314,68 @@ input:checked + .slider:before {
 .gallerySelectionContainer ol li p:hover {
     transform: scale(1.2);
     text-shadow: 0px 0px 20px rgb(255, 255, 255);
+}
+
+.cloned {
+    position: fixed; /* Stick it to the top of the page */
+    top: 0; /* Make it stay at the top */
+    left: 0;
+    right: 0;
+    height: 50px;
+    z-index: 100; /* Ensure it's above other elements */
+    background-color: rgba(0, 0, 0, 0.8); /* Add a background to ensure readability */
+    padding: 10px 0; /* Add padding to prevent the text from looking cramped */
+    margin: 0;
+    transition: transform 1s ease, opacity 0.5s ease; /* Smooth transition */
+}
+
+.cloned ol {
+    justify-content: space-around; /* Spread the text evenly */
+    display: flex; /* Use flexbox to ensure proper alignment */
+    content: space-around; /* Spread items evenly when fixed */
+    margin: 0;
+    padding: 0;
+}
+
+/*Gallery*/
+.galleryContainer {
+    grid-area: gallery;
+    color: white;
+    letter-spacing: 4px;
+    text-align: center;
+    padding: 50px;
+    margin: 10px;
+    
+    z-index: 10; /* Keep it above other content */
+}
+
+.galleryRow {
+    display: flex; /* Use flexbox for row layout */
+    flex-wrap: wrap;
+    gap: 10px; /* Add spacing between images */
+    justify-content: center; /* Center the images */
+    margin-bottom: 100px; /* Space below the row */
+}
+
+.galleryRow img {
+    max-width: 100%;
+    height: auto;
+    object-fit:contain;
+}
+
+.galleryContainer img {
+    display: grid;
+    max-width: 600px;
+    margin: 0;
+    padding: 0;
+}
+
+.galleryContainer h2 {
+    font-size: 50px;
+    font-weight: 400;
+    letter-spacing: 40px;
+    text-transform: uppercase;
+    padding: 50px;
 }
 
 /*====================Footer Area====================*/
