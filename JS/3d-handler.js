@@ -1,7 +1,5 @@
 // Import the THREE.js library as a module
 import * as THREE from "https://cdn.skypack.dev/three@0.129.0/build/three.module.js";
-// To allow for the camera to move around the scene
-import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
 // To allow for importing the .gltf file
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
 
@@ -10,7 +8,7 @@ const scene = new THREE.Scene();
 
 // Create a new camera
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 0, 0.8); // Set the initial camera position
+camera.position.set(0, 0, 10); // Set the initial camera position
 
 // Instantiate a new renderer and set its size
 const renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -19,27 +17,21 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 // Add the renderer to the DOM
 document.getElementById("container3D").appendChild(renderer.domElement);
 
-// OrbitControls for moving the camera
-let controls = new OrbitControls(camera, renderer.domElement);
-controls.minDistance = 0.5; // Minimum distance for camera zoom
-controls.maxDistance = 1.5; // Maximum distance for camera zoom
-controls.enabled = false;  // Initially disabled, will be controlled by tracking switch
-
 // Set the object to render
 let object;
 
 // Load the file using GLTFLoader
 const loader = new GLTFLoader();
 loader.load(
-    'ASSETS/3d-face.gltf',
+    'ASSETS/3dLogo/kk2-logo-2.glb',
     function (gltf) {
         object = gltf.scene;
 
         // Adjust the position and rotation
         object.position.set(0, 0, 0);
-        object.rotation.y = Math.PI;
-        object.rotation.x = Math.PI / 0.54;
-        object.scale.set(2, 2, 2); // Scale the model
+        object.rotation.y = Math.PI;  // Set it to face forward
+        object.rotation.x = 0;
+        object.scale.set(1, 1, 1); // Scale the model
 
         scene.add(object); // Add the object to the scene
     },
@@ -53,24 +45,32 @@ loader.load(
 
 // Add lights to the scene
 const topLight = new THREE.DirectionalLight(0xffffff, 1);
-topLight.position.set(500, 500, 500);
+topLight.position.set(0, 0, 100);
 topLight.castShadow = true;
 scene.add(topLight);
 
 const ambientLight = new THREE.AmbientLight(0x333333);
 scene.add(ambientLight);
 
-// Get the tracking switch element
-const trackingSwitch = document.getElementById('trackingSwitch');
+// Render the scene in a loop
+function animate() {
+    requestAnimationFrame(animate);
+
+    if (object) {
+        // Calculate target rotation based on mouse position
+        targetRotation.y = 1.6 + (mouseX / window.innerWidth) * 3;
+        targetRotation.x = -1 + (mouseY * 2.5 / window.innerHeight);
+        
+        // Smoothly interpolate the object's rotation towards the target rotation
+        object.rotation.x += (targetRotation.x - object.rotation.x) * rotationDampening;
+        object.rotation.y += (targetRotation.y - object.rotation.y) * rotationDampening;
+    }
+    renderer.render(scene, camera);
+}
 
 // Variables for smooth transition
-let targetPosition = new THREE.Vector3(0, 0, 0);
-let targetRotation = new THREE.Euler(Math.PI / 0.54, Math.PI, 0);
-let rotationDampening = 0.05; // Adjust this value for smoothness
-let transitionSpeed = 0.03; // Adjust this value for a smoother/slower transition
-
-// True if the object follows the cursor
-let track = trackingSwitch.checked; // Initially set based on the checkbox state
+let targetRotation = new THREE.Euler(Math.PI / 0.54, Math.PI, 0); // Set the default rotation
+let rotationDampening = 0.01; // Adjust this value for smoothness
 
 // Mouse movement listener
 let mouseX = window.innerWidth / 2;
@@ -80,42 +80,15 @@ document.onmousemove = (e) => {
     mouseY = e.clientY;
 };
 
-// Render the scene in a loop
-function animate() {
-    requestAnimationFrame(animate);
-
-    if (object) {
-        if (track) {
-            // Calculate target rotation based on mouse position
-            targetRotation.y = 1.6 + (mouseX / window.innerWidth) * 3;
-            targetRotation.x = -1.7 + (mouseY * 2.5 / window.innerHeight);
-            
-            // Smoothly interpolate the object's rotation towards the target rotation
-            object.rotation.x += (targetRotation.x - object.rotation.x) * rotationDampening;
-            object.rotation.y += (targetRotation.y - object.rotation.y) * rotationDampening;
-        } else {
-            // Smoothly transition the object to the target position and rotation
-            object.position.lerp(targetPosition, transitionSpeed);
-            object.rotation.x += (targetRotation.x - object.rotation.x) * transitionSpeed;
-            object.rotation.y += (targetRotation.y - object.rotation.y) * transitionSpeed;
+// Event listener for when the cursor leaves the window
+window.addEventListener('mouseout', (e) => {
+    // Check if the cursor actually left the window (not just entered a child element)
+    if (!e.relatedTarget || e.relatedTarget.nodeName === "HTML") {
+        if (object) {
+            mouseX = window.innerWidth / 2;
+            mouseY = window.innerHeight / 2;
         }
     }
-    renderer.render(scene, camera);
-}
-
-// Event listener to toggle tracking on/off
-trackingSwitch.addEventListener('change', function () {
-    track = trackingSwitch.checked; // Update tracking mode based on the switch
-    controls.enabled = !track; // Enable OrbitControls when tracking is off
-
-    // Reset the target position and rotation for smooth transition
-    targetPosition.set(0, 0, 0);
-    targetRotation.set(Math.PI / 54, Math.PI, 0); // Reset rotation
-    
-    // Reset camera position
-    camera.position.set(0, 0, 0.8); // Reset camera to initial position
-    controls.target.set(0, 0, 0); // Reset controls target
-    controls.update(); // Update controls to reflect the change
 });
 
 // Resize event listener

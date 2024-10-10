@@ -4,32 +4,157 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D Gallery</title>
-    <link rel="stylesheet" href="CSS/3d-style.css">
-    <link rel="stylesheet" href="CSS/gallery-style.css">
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
     <header>
         <div class="text-container">
-            <h1>3D WEBSITE</h1>
+            <div id="javiejaavieContainer">
+                <img id="jaaviejaavie" src="ASSETS/Text/javiejaavieText.jpg" style="width: 200px;">
+            </div>
             <nav>
                 <ul>
                     <li>
-                        <a href="3d-page.html" class="headerButton"><p>Home</p></a>
+                        <a href="home-page.html" class="headerButton"><p>Home</p></a>
                     </li>
                     <li>
                         <a href="gallery.html" class="headerButton"><p>Gallery</p></a>
                     </li>
+                    <li>
+                        <a href="gallery.html" class="headerButton fade-in"><p>Contact</p></a>
+                    </li>
+                    <li>
+                        <a href="gallery.html" class="headerButton fade-in"><p>About</p></a>
+                    </li>
                 </ul>
             </nav>
-        </div> 
+        </div>
     </header>
-
-    <main></main>
-
+    <main>
+        <!-- Gallery Wheel -->
+        <div id="drag-container">
+            <div id="spin-container">
+                <!-- Images -->                
+                <img src="ASSETS/GalleryAssets/GallerySelector/editorialCover.jpg" data-link="#editorialContainer" alt="editorialCover">
+                <img src="ASSETS/GalleryAssets/GallerySelector/lifeCover.jpeg" data-link="#lifeContainer" alt="lifeCover">
+                <img src="ASSETS/GalleryAssets/GallerySelector/musicVideoCover.png" data-link="#musicVideoContainer" alt="musicVideoCover">
+                <img src="ASSETS/GalleryAssets/GallerySelector/portraitCover.jpg" data-link="#portraitContainer" alt="portraitCover">
+                <img src="ASSETS/GalleryAssets/GallerySelector/coverCover.jpg" data-link="#coverContainer" alt="coverCover">
+            </div>
+        </div>
+        <!-- Gallery Selection Container -->
+        <div class="gallerySelectionContainer">
+            <ol>
+                <li>
+                    <a href="#coverContainer" class="gallerySelectionButton"><p>Covers</p></a>
+                </li>
+                <li>
+                    <a href="#musicVideoContainer" class="gallerySelectionButton"><p>Music Videos</p></a>
+                </li>
+                <li>
+                    <a href="#lifeContainer" class="gallerySelectionButton"><p>Life</p></a>
+                </li>
+                <li>
+                    <a href="#portraitContainer" class="gallerySelectionButton"><p>Portraits</p></a>
+                </li>
+                <li>
+                    <a href="#editorialContainer" class="gallerySelectionButton"><p>Editorial</p></a>
+                </li>
+            </ol>
+        </div>
+        <!-- Gallery Showcase -->
+        <div class="gallery-showcase">
+            <div class="galleryContainer" id="coverContainer">
+                <h2>Covers</h2>
+                <div class="galleryRow">
+                    <img src="ASSETS/GalleryAssets/Cover/b6.jpg">
+                    <img src="ASSETS/GalleryAssets/Cover/lunerves.jpg">
+                    <img src="ASSETS/GalleryAssets/Cover/reign.jpg">
+                    <img src="ASSETS/GalleryAssets/Cover/suiiixide.jpg">
+                </div>
+            </div>
+            <div class="galleryContainer" id="musicVideoContainer">
+                <h2>Music Videos</h2>
+                <div class="galleryRow">
+                    <img src="ASSETS/GalleryAssets/MusicVideo/IMG_6073.PNG">
+                    <img src="ASSETS/GalleryAssets/MusicVideo/IMG_6074.PNG">
+                    <img src="ASSETS/GalleryAssets/MusicVideo/IMG_6474.PNG">
+                </div>
+                <div class="galleryRow">
+                    <iframe src="https://www.youtube.com/embed/JP0YDs6FbX4" 
+                        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+                        clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <div class="galleryRow">
+                    <img src="ASSETS/GalleryAssets/MusicVideo/SIX_1B32F930-BD03-4322-BD9F-0C84106DC315.jpg">
+                    <img src="ASSETS/GalleryAssets/MusicVideo/SIX_E9C02E12-17CB-4D90-9FB3-61DED93894CC.jpg">    
+                </div>
+                <div class="galleryRow">
+                    <img src="ASSETS/GalleryAssets/MusicVideo/IMG_1490.PNG">
+                    <img src="ASSETS/GalleryAssets/MusicVideo/IMG_1516.PNG">
+                    <img src="ASSETS/GalleryAssets/MusicVideo/IMG_1537.PNG">
+                </div>
+            </div>
+            <div class="galleryContainer" id="lifeContainer">
+                <h2>Life</h2>
+                <div class="galleryRow">
+                    <img src="ASSETS/GalleryAssets/Life/4E83AA9A-2856-45ED-9297-3C3ABACF9699.jpg">
+                    <img src="ASSETS/GalleryAssets/Life/2x 9 .jpg">
+                </div>
+                <div class="galleryRow">
+                    <img src="ASSETS/GalleryAssets/Life/DSC00721.jpeg">
+                    <img src="ASSETS/GalleryAssets/Life/DSC00685.jpeg">
+                    <img src="ASSETS/GalleryAssets/Life/DSC00365.jpeg">
+                    <img src="ASSETS/GalleryAssets/Life/DSC00710.jpeg">
+                </div>
+                <div class="galleryRow">
+                    <img src="ASSETS/GalleryAssets/Life/2x 13 .jpg">
+                    <img src="ASSETS/GalleryAssets/Life/DSC00075.JPG">
+                </div>
+            </div>
+            <div class="galleryContainer" id="portraitContainer">
+                <h2>Portraits</h2>
+                <div class="galleryRow">
+                    <img src="ASSETS/GalleryAssets/Portrait/2x 1 .jpg">
+                    <img src="ASSETS/GalleryAssets/Portrait/2x. 4 .jpg">
+                </div>
+                <div class="galleryRow">
+                    <img src="ASSETS/GalleryAssets/Portrait/DSC00801.jpeg">
+                </div>
+                <div class="galleryRow">
+                    <img src="ASSETS/GalleryAssets/Portrait/r3.jpg">
+                    <img src="ASSETS/GalleryAssets/Portrait/IMG_5089.JPG">
+                </div>
+            </div>
+            <div class="galleryContainer" id="editorialContainer">
+                <h2>Editorial</h2>
+                <div class="galleryRow">
+                    <img src="ASSETS/GalleryAssets/Editorial/Image 2021-12-01 at 5.53 PM.jpg">
+                </div>
+                <div class="galleryRow">
+                    <img src="ASSETS/GalleryAssets/Editorial/DSC00168.jpg">
+                    <img src="ASSETS/GalleryAssets/Editorial/DSC00187.jpeg">
+                </div>
+                <div class="galleryRow">
+                    <img src="ASSETS/GalleryAssets/Editorial/DSC00877.jpg">
+                    <img src="ASSETS/GalleryAssets/Editorial/DSC01474.jpg">
+                    <img src="ASSETS/GalleryAssets/Editorial/F1670150-5546-4197-9B03-8CDA505BD298.jpg">
+                </div>
+                <div class="galleryRow">
+                    <img src="ASSETS/GalleryAssets/Editorial/264318E3-7563-4BFA-B2F0-678DA749724F.jpg">
+                </div>
+            </div>
+        </div>
+    </main>
     <footer>
         <div class="text-container">
             <p>@2024 tristanhebrt</p>
         </div>
     </footer>
+    <!-- Script -->
+    <script src="JS/gallery-handler.js" type="module"></script>
+    <script src="JS/gallery-selection-handler.js" type="module"></script>
 </body>
 </html>

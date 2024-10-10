@@ -1,0 +1,441 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Ensure padding and borders are included in the element's total width and height */
+}
+
+html, body {
+    height: 100%; /* Ensure the body covers the full height of the viewport */
+    touch-action: none;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Hide the scrollbar */
+}
+
+html::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar */
+}
+
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* Define rows for header, main, footer */
+    grid-template-columns: 1fr; /* One column layout */
+    grid-template-areas:
+        "header" /* Header area */
+        "main"   /* Main content area */
+        "gallery" /* Picture showcase area */
+        "footer"; /* Footer area */
+  
+    overflow-x: hidden; /* Prevent horizontal overflow */
+    overflow-y: auto; /* Allow vertical scrolling */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    background-color: black; /* Use black background */
+}
+
+/*====================Header Area====================*/
+header {
+    grid-area: header; /* Assign header to the header area */
+    color: white;
+    letter-spacing: 4px;
+    text-align: center;
+    padding: 50px;
+    margin: 10px;
+    
+    z-index: 10; /* Keep it above other content */
+}
+
+/* Nav */
+nav ul {
+    list-style: none; /* Remove bullet points */
+    display: grid; /* Set display to grid */
+    grid-template-columns: repeat(1, auto); /* Set a specific number of columns */
+    gap: 10px; /* Adds space between the items */
+    padding: 0;
+    margin: 0;
+    margin-top: 50px;
+    position: absolute;
+}
+
+nav ul li {
+    text-align: center; /* Center text within each grid item */
+}
+
+nav ul li p {
+    text-decoration: none;
+    color: white; /* Adjust color as needed */
+    transition: transform 0.5s ease;
+}
+
+nav ul li p:hover {
+    transform: scale(1.2);
+    text-shadow: 0px 0px 20px rgb(255, 255, 255);
+}
+
+#javiejaavieContainer {
+    position: relative; /* Make the container a positioned element */
+    width: 200px; /* Or any width you prefer */
+    height: auto; /* Adjust as needed */
+    grid-column: 1;
+}
+  
+#javiejaavie {
+    width: 100%; /* Ensure the image covers the container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove bottom space under the image */
+}
+  
+#javiejaavieContainer::before {
+    content: '';
+    position: absolute; /* Position the gradient over the image */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0) 50%, rgb(0, 0, 0) 90%);
+    pointer-events: none; /* Ensure the image remains interactable */
+    opacity: 0.8; /* Adjust the opacity as needed */
+}
+
+/* Initial state of the fade-in links */
+.fade-in {
+    opacity: 0; /* Start fully transparent */
+    transition: opacity 5s ease-in; /* Smooth transition for opacity */
+}
+
+/* Class to trigger the fade-in */
+.fade-in.visible {
+    opacity: 1; /* Fade in to fully visible */
+}
+
+/*====================Main Area====================*/
+main {
+    grid-area: main; /* Assign main to the main area */
+    display: flex; /* Use flexbox for the main area */
+    flex-direction: column; /* Arrange children vertically */
+    justify-content: flex-start; /* Align items to the top */
+    align-items: center; /* Center items horizontally */
+    position: relative; /* Positioning context for child elements */
+    height: auto; /* Allow height to adjust based on content */
+    margin-bottom: 100px;
+    margin-top: 70px;
+}
+
+.text-container {
+    display: grid;
+    justify-items: center; /* Centers items horizontally */
+    align-items: center;   /* Centers items vertically */
+    grid-template-columns: auto auto; /* Two columns for h1 and anchor (or more if needed) */
+    gap: 20px; /* Optional: Adds space between items */
+    padding-bottom: 20px; /* Keeps bottom padding for spacing */
+}
+
+.text-container h1 {
+    grid-column: 1; /* Occupy the first column */
+}
+
+.text-container a {
+    grid-column: 2; /* Occupy the second column */
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+
+/* Tracking Switch */
+#trackingSwitchContainer {
+    position: absolute; /* Set to absolute positioning */
+    top: 0%; /* Center it vertically */
+    right: 400px; /* Move it to the right side */
+    transform: translateY(-50%); /* Adjust to center vertically */
+    z-index: 10; /* Ensure it stays above other elements */
+    display: flex; /* Optional: Use flex for alignment */
+    align-items: center; /* Center switch vertically */
+    gap: 10px; /* Space between switch and label */
+}
+
+#tracking {
+    font-size: 20px;
+    letter-spacing: 3px;
+    z-index: 10;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    justify-self: end; /* Align to the right of the container */
+    margin: 10px;
+    z-index: 10;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: rgba(255, 0, 0, 0.178);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* 3D Container */
+#container3D {
+    display: flex; /* Ensures it uses flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    position: absolute; /* Set to absolute to position correctly */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for centering */
+    height: 100%; /* Allow it to fill available space */
+    width: 100%; /* Allow it to fill available space */
+}
+
+#container3D canvas {
+    width: 100vw !important;
+    height: 100vh !important;
+    position: absolute; /* Position the canvas absolutely */
+    top: 1;
+    left: 0;
+    z-index: 1; /* Behind other elements */
+}
+
+.circle-overlay {
+    position: absolute; /* Position the circle absolutely */
+    top: 50%; /* Position at the vertical center */
+    left: 50%; /* Position at the horizontal center */
+    width: 1000px; /* Set the desired width */
+    height: 1000px; /* Set the desired height */
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 0, 0, 0) 50%); /* Radial gradient for fading edges */
+    border-radius: 50%; /* Make it circular */
+    z-index: 0; /* Position below the container */
+    transform: translate(-50%, -50%); /* Center the circle using transform */
+}
+
+/*====================3D Gallery Area====================*/
+/* Keyframes for spinning animation */
+@keyframes spin {
+    from {
+        transform: rotateY(0deg);
+    } to {
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes spinRevert {
+    from {
+        transform: rotateY(360deg);
+    } to {
+        transform: rotateY(0deg);
+    }
+}
+
+/* 3D Drag Container */
+
+#drag-container, #spin-container {
+    position: relative;
+    display: flex; /* Use flex display */
+    margin: auto; /* Center horizontally */
+    transform-style: preserve-3d;
+    transform: rotateX(-10deg);
+}
+
+#drag-container img, #drag-container video {
+    transform-style: preserve-3d;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 300px;
+    width: auto;
+    object-fit: cover;
+    line-height: 200px;
+    font-size: 50px;
+    text-align: center;
+    box-shadow: 0 0 white;
+    filter: drop-shadow(0 0 4px rgb(0, 0, 0)); /* Modern alternative to box-shadow */
+    border-radius: 5px;
+}
+
+#drag-container img:hover, #drag-container video:hover {
+    filter: drop-shadow(0 0 4px rgb(0, 0, 0)); /* On hover effect */
+}
+
+#drag-container h1 {
+    font-size: 30px;
+    letter-spacing: 4px;
+    text-align: center;
+    font-weight: 200;
+    text-shadow: 0px 0px 20px rgb(255, 255, 255);
+}
+
+/*Gallery Selection*/
+.gallerySelectionContainer {
+    grid-area: main;
+    color: white;
+    letter-spacing: 4px;
+    text-align: center;
+    padding: 50px;
+    margin: 10px;
+    
+    z-index: 10; /* Keep it above other content */
+}
+
+.gallerySelectionContainer ol {
+    list-style: none; /* Remove bullet points */
+    display: grid; /* Set display to grid */
+    grid-template-columns: repeat(1, auto); /* Set a specific number of columns */
+    gap: 10px; /* Adds space between the items */
+    padding: 0;
+    margin: 0;
+    margin-top: 50px;
+}
+
+.gallerySelectionContainer ol li {
+    text-align: center; /* Center text within each grid item */
+}
+
+.gallerySelectionContainer ol li p {
+    color: white; /* Adjust color as needed */
+    transition: transform 0.5s ease;
+}
+
+.gallerySelectionContainer ol li a {
+    text-decoration: none;
+}
+
+.gallerySelectionContainer ol li p:hover {
+    transform: scale(1.2);
+    text-shadow: 0px 0px 20px rgb(255, 255, 255);
+}
+
+.cloned {
+    position: fixed; /* Stick it to the top of the page */
+    top: 0; /* Make it stay at the top */
+    left: 0;
+    right: 0;
+    height: 50px;
+    z-index: 100; /* Ensure it's above other elements */
+    background-color: rgba(0, 0, 0, 0.8); /* Add a background to ensure readability */
+    padding: 10px 0; /* Add padding to prevent the text from looking cramped */
+    margin: 0;
+    transition: transform 1s ease, opacity 0.5s ease; /* Smooth transition */
+}
+
+.cloned ol {
+    justify-content: space-around; /* Spread the text evenly */
+    display: flex; /* Use flexbox to ensure proper alignment */
+    content: space-around; /* Spread items evenly when fixed */
+    margin: 0;
+    padding: 0;
+}
+
+/*Gallery*/
+.galleryContainer {
+    grid-area: gallery;
+    color: white;
+    letter-spacing: 4px;
+    text-align: center;
+    padding: 50px;
+    margin: 10px;
+    
+    z-index: 10; /* Keep it above other content */
+}
+
+.galleryRow {
+    display: flex; /* Use flexbox for row layout */
+    flex-wrap: wrap;
+    gap: 10px; /* Add spacing between images */
+    justify-content: center; /* Center the images */
+    margin-bottom: 100px; /* Space below the row */
+}
+
+.galleryRow img {
+    max-width: 100%;
+    height: auto;
+    object-fit:contain;
+}
+
+.galleryRow iframe {
+    width: 1100px;
+    height: 600px;
+}
+
+.galleryContainer img {
+    display: grid;
+    max-width: 600px;
+    margin: 0;
+    padding: 0;
+}
+
+.galleryContainer h2 {
+    font-size: 50px;
+    font-weight: 400;
+    letter-spacing: 40px;
+    text-transform: uppercase;
+    padding: 50px;
+}
+
+.glow {
+    animation: glowAnimation 1s ease-in-out forwards, fadeOut 1s ease-in-out 3s forwards; /* Fade out after 3 seconds */
+}
+
+@keyframes glowAnimation {
+    0% {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.5);
+        opacity: 1; /* Keep the text fully visible */
+    }
+    100% {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1);
+        opacity: 1; /* Keep the text fully visible */
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1);
+    }
+    100% {
+        text-shadow: none; /* Remove the glow */
+    }
+}
+
+/*====================Footer Area====================*/
+footer {
+    grid-area: footer; /* Assign footer to the footer area */
+    color: white;
+    letter-spacing: 4px;
+    text-align: center;
+    padding: 0px;
+    margin: 10px;
+    grid-column: 1;
+    margin-top: 100px;
+    z-index: 10; /* Keep it above other content */
+}
