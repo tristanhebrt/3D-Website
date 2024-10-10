@@ -46,7 +46,7 @@ function init() {
         });
 
         // Add click event to open link
-        element.addEventListener('click', () => {
+        element.addEventListener('dblclick', () => {
             const link = element.getAttribute('data-link'); // Get the link from data-link attribute
             if (link) {
                 window.open(link, '_blank'); // Open link in a new tab
