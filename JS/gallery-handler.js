@@ -44,6 +44,14 @@ function init() {
         element.addEventListener('mouseleave', () => {
             element.style.transform = `rotateY(${i * (360 / aEle.length)}deg) translateZ(${radius + spacing}px)`; // Reset to original size
         });
+
+        // Add click event to open link
+        element.addEventListener('click', () => {
+            const link = element.getAttribute('data-link'); // Get the link from data-link attribute
+            if (link) {
+                window.open(link, '_blank'); // Open link in a new tab
+            }
+        });
     });
 
     addOrbitControls(); // Add orbit controls for mouse drag
