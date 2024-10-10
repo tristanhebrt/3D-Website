@@ -238,17 +238,26 @@ input:checked + .slider:before {
     }
 }
 
-/* 3D Drag Container */
-.drag-container{
-    position: relative; /* Set to relative for stacking */
-    display: flex; /* Use flex display */
-    margin: 20px auto; /* Center horizontally and add space */
-    transform-style: preserve-3d;
-    transform: rotateX(-10deg);
-    height: auto; /* Allow height to adjust based on content */
-} 
+/*====================3D Gallery Area====================*/
+/* Keyframes for spinning animation */
+@keyframes spin {
+    from {
+        transform: rotateY(0deg);
+    } to {
+        transform: rotateY(360deg);
+    }
+}
 
-.spin-container {
+@keyframes spinRevert {
+    from {
+        transform: rotateY(360deg);
+    } to {
+        transform: rotateY(0deg);
+    }
+}
+
+/* 3D Drag Container */
+#drag-container, #spin-container {
     position: relative;
     display: flex; /* Use flex display */
     margin: auto; /* Center horizontally */
@@ -256,8 +265,7 @@ input:checked + .slider:before {
     transform: rotateX(-10deg);
 }
 
-.drag-container img, .drag-container video,
-.spin-container img, .spin-container video {
+#drag-container img, #drag-container video {
     transform-style: preserve-3d;
     position: absolute;
     left: 0;
@@ -270,8 +278,7 @@ input:checked + .slider:before {
     filter: drop-shadow(0 0 8px white); /* Modern alternative to box-shadow */
 }
 
-.drag-container img:hover, .drag-container video:hover,
-.spin-container img:hover, .spin-container video:hover {
+#drag-container img:hover, #drag-container video:hover {
     filter: drop-shadow(0 0 15px whitesmoke); /* On hover effect */
 }
 
