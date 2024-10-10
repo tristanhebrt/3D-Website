@@ -57,3 +57,41 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.observe(heading); // Observe each heading
     });
 });
+
+// Autoplay Video =========================================
+// Autoplay Video =========================================
+document.addEventListener('DOMContentLoaded', function () {
+    const videos = document.querySelectorAll('iframe');
+    let firstVideoPlayed = false; // Flag to track if the first video has played
+
+    const options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.7 // Video will autoplay when at least 70% is visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !firstVideoPlayed) {
+                // Autoplay only the first video
+                const firstVideo = videos[0];
+                const src = firstVideo.getAttribute('src');
+
+                firstVideo.src = `${src}?autoplay=1`; // Start autoplay
+                firstVideoPlayed = true; // Mark the first video as played
+
+                // Unobserve other videos to prevent unnecessary checks
+                videos.forEach((video, index) => {
+                    if (index !== 0) {
+                        observer.unobserve(video);
+                    }
+                });
+            }
+        });
+    }, options);
+
+    videos.forEach(video => {
+        observer.observe(video); // Observe each video
+    });
+});
+
