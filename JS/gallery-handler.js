@@ -1,4 +1,4 @@
-const radius = 200;
+const radius = 250;
 const imgWidth = 300; // Width of the images
 const imgHeight = 300; // Height of the images
 const spacing = 50; // Increase this value for more space between images
@@ -36,7 +36,7 @@ function init() {
 
         // Add hover event for growing effect
         element.addEventListener('mouseenter', () => {
-            element.style.transform += ' scale(1.1)'; // Grow the image/video on hover
+            element.style.transform += ' scale(1.2)'; // Grow the image/video on hover
             element.style.transition = 'transform 0.3s ease'; // Smooth hover transition
         });
 

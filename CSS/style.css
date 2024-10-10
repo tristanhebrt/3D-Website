@@ -275,11 +275,12 @@ input:checked + .slider:before {
     font-size: 50px;
     text-align: center;
     box-shadow: 0 0 white;
-    filter: drop-shadow(0 0 8px white); /* Modern alternative to box-shadow */
+    filter: drop-shadow(0 0 4px rgb(0, 0, 0)); /* Modern alternative to box-shadow */
+    border-radius: 5px;
 }
 
 #drag-container img:hover, #drag-container video:hover {
-    filter: drop-shadow(0 0 15px whitesmoke); /* On hover effect */
+    filter: drop-shadow(0 0 4px rgb(0, 0, 0)); /* On hover effect */
 }
 
 #drag-container h1 {
