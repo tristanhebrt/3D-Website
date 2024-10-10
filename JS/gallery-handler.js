@@ -1,7 +1,7 @@
-const radius = 240;
+const radius = 600;
 const imgWidth = 300; // Width of the images
-const imgHeight = 400; // Height of the images
-const spacing = 80; // Increase this value for more space between images
+const imgHeight = 300; // Height of the images
+const spacing = 20; // Increase this value for more space between images
 
 let dragging = false;
 let lastX = 0;
@@ -36,7 +36,7 @@ function init() {
 
         // Add hover event for growing effect
         element.addEventListener('mouseenter', () => {
-            element.style.transform += ' scale(1.2)'; // Grow the image/video on hover
+            element.style.transform += ' scale(1.1)'; // Grow the image/video on hover
             element.style.transition = 'transform 0.3s ease'; // Smooth hover transition
         });
 
@@ -143,7 +143,7 @@ function animateMomentum() {
 
 // Automatically rotate the container slowly
 function rotateAutomatically() {
-    currentAngleX += 0.1; // Adjust this value for rotation speed
+    currentAngleX += 0.03; // Adjust this value for rotation speed
     updateRotation(); // Update the rotation based on the current angle
     requestAnimationFrame(rotateAutomatically); // Continue the automatic rotation
 }
