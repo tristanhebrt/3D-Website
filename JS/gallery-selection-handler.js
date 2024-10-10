@@ -1,3 +1,4 @@
+// Gallery Selector =========================================
 const gallerySelectionContainer = document.querySelector('.gallerySelectionContainer');
 const initialOffsetTop = gallerySelectionContainer.offsetTop;
 
@@ -21,6 +22,7 @@ function handleScroll() {
 }
 window.addEventListener('scroll', handleScroll);
 
+// Nav Text Fade In =========================================
 document.addEventListener('DOMContentLoaded', function () {
     const fadeInLinks = document.querySelectorAll('.fade-in');
     
@@ -29,5 +31,29 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => {
             link.classList.add('visible');
         }, index * 300); // Stagger the fade-in effect (300ms per link)
+    });
+});
+
+// Gallery Title Glow =========================================
+document.addEventListener("DOMContentLoaded", () => {
+    const headings = document.querySelectorAll(".galleryContainer h2"); // Select all h2 elements in gallery containers
+
+    const options = {
+        root: null, // Use the viewport as the root
+        rootMargin: "0px",
+        threshold: 0.1 // Trigger when 10% of the target is visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("glow"); // Add the glow class when in view
+                observer.unobserve(entry.target); // Stop observing after the animation
+            }
+        });
+    }, options);
+
+    headings.forEach(heading => {
+        observer.observe(heading); // Observe each heading
     });
 });
