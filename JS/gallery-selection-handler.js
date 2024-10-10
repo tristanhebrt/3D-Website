@@ -19,5 +19,15 @@ function handleScroll() {
         clonedContainer.style.transform = 'translateY(-50px)'; // Move up when hidden
     }
 }
-
 window.addEventListener('scroll', handleScroll);
+
+document.addEventListener('DOMContentLoaded', function () {
+    const fadeInLinks = document.querySelectorAll('.fade-in');
+    
+    // Use setTimeout to delay the addition of the visible class for each link
+    fadeInLinks.forEach((link, index) => {
+        setTimeout(() => {
+            link.classList.add('visible');
+        }, index * 300); // Stagger the fade-in effect (300ms per link)
+    });
+});

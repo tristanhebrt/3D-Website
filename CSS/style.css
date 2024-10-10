@@ -48,6 +48,7 @@ nav ul {
     padding: 0;
     margin: 0;
     margin-top: 50px;
+    position: absolute;
 }
 
 nav ul li {
@@ -90,6 +91,17 @@ nav ul li p:hover {
     opacity: 0.8; /* Adjust the opacity as needed */
 }
 
+/* Initial state of the fade-in links */
+.fade-in {
+    opacity: 0; /* Start fully transparent */
+    transition: opacity 5s ease-in; /* Smooth transition for opacity */
+}
+
+/* Class to trigger the fade-in */
+.fade-in.visible {
+    opacity: 1; /* Fade in to fully visible */
+}
+
 /*====================Main Area====================*/
 main {
     grid-area: main; /* Assign main to the main area */
@@ -100,6 +112,7 @@ main {
     position: relative; /* Positioning context for child elements */
     height: auto; /* Allow height to adjust based on content */
     margin-bottom: 100px;
+    margin-top: 70px;
 }
 
 .text-container {
@@ -241,6 +254,7 @@ input:checked + .slider:before {
 }
 
 /* 3D Drag Container */
+
 #drag-container, #spin-container {
     position: relative;
     display: flex; /* Use flex display */
