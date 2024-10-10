@@ -12,7 +12,7 @@ function handleScroll() {
     const scrollPosition = window.scrollY;
 
     // Trigger the fixed clone when scrolling past a certain point
-    if (scrollPosition > initialOffsetTop + 600) {
+    if (scrollPosition > initialOffsetTop + 550) {
         clonedContainer.style.opacity = '1'; // Fade in
         clonedContainer.style.transform = 'translateY(0)'; // Drop in smoothly
     } else {
