@@ -44,6 +44,26 @@ header {
     z-index: 10; /* Keep it above other content */
 }
 
+.header-text-container {
+    display: grid;
+    justify-items: center; /* Centers items horizontally */
+    align-items: center;   /* Centers items vertically */
+    grid-template-columns: auto auto; /* Two columns for h1 and anchor (or more if needed) */
+    gap: 20px; /* Optional: Adds space between items */
+    padding-bottom: 20px; /* Keeps bottom padding for spacing */
+}
+
+.header-text-container h1 {
+    grid-column: 1; /* Occupy the first column */
+}
+
+.header-text-container a {
+    grid-column: 2; /* Occupy the second column */
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+
 /* Nav */
 nav ul {
     list-style: none; /* Remove bullet points */
@@ -133,105 +153,42 @@ main {
 .text-container h1{
     font-size: 50px;
     font-weight: 400;
+    text-transform: uppercase;
+    width: 700px;
 }
 
 .text-container p{
-    grid-row: 2;
     font-size: 20px;
     font-weight: 200;
+    width: 700px;
 }
 
 .text-container iframe {
-    grid-row: 3;
     margin-top: 30px;
-    width: 800px;
+    width: 700px;
     height: 400px;
 }
 
-.header-text-container {
-    display: grid;
-    justify-items: center; /* Centers items horizontally */
-    align-items: center;   /* Centers items vertically */
-    grid-template-columns: auto auto; /* Two columns for h1 and anchor (or more if needed) */
-    gap: 20px; /* Optional: Adds space between items */
-    padding-bottom: 20px; /* Keeps bottom padding for spacing */
+.social-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.header-text-container h1 {
-    grid-column: 1; /* Occupy the first column */
+.social-container a {
+    transition: transform 0.5s ease;
 }
 
-.header-text-container a {
-    grid-column: 2; /* Occupy the second column */
-    color: white;
-    text-decoration: none;
-    padding: 10px;
+.social-container a:hover {
+    transform: scale(1.2);
 }
 
-/* Tracking Switch */
-#trackingSwitchContainer {
-    position: absolute; /* Set to absolute positioning */
-    top: 0%; /* Center it vertically */
-    right: 400px; /* Move it to the right side */
-    transform: translateY(-50%); /* Adjust to center vertically */
-    z-index: 10; /* Ensure it stays above other elements */
-    display: flex; /* Optional: Use flex for alignment */
-    align-items: center; /* Center switch vertically */
-    gap: 10px; /* Space between switch and label */
+.social-container img {
+    max-width: 100px;
 }
 
-#tracking {
-    font-size: 20px;
-    letter-spacing: 3px;
-    z-index: 10;
-}
-
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-    justify-self: end; /* Align to the right of the container */
-    margin: 10px;
-    z-index: 10;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 34px;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-}
-
-input:checked + .slider {
-    background-color: rgba(255, 0, 0, 0.178);
-}
-
-input:checked + .slider:before {
-    transform: translateX(26px);
+.social-container p {
+    margin: 20px;
 }
 
 /* 3D Container */
