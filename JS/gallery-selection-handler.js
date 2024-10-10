@@ -61,37 +61,22 @@ document.addEventListener("DOMContentLoaded", () => {
 // Autoplay Video =========================================
 // Autoplay Video =========================================
 document.addEventListener('DOMContentLoaded', function () {
-    const videos = document.querySelectorAll('iframe');
-    let firstVideoPlayed = false; // Flag to track if the first video has played
+    const musicVideosButton = document.querySelector('.gallerySelectionButton[href="#musicVideoContainer"]');
+    const firstMusicVideo = document.querySelector('#musicVideoContainer iframe');
 
-    const options = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.7 // Video will autoplay when at least 70% is visible
-    };
+    musicVideosButton.addEventListener('click', function (event) {
+        // Prevent the default anchor behavior
+        event.preventDefault();
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !firstVideoPlayed) {
-                // Autoplay only the first video
-                const firstVideo = videos[0];
-                const src = firstVideo.getAttribute('src');
+        // Get the current src of the first video
+        const src = firstMusicVideo.getAttribute('src');
 
-                firstVideo.src = `${src}?autoplay=1`; // Start autoplay
-                firstVideoPlayed = true; // Mark the first video as played
-
-                // Unobserve other videos to prevent unnecessary checks
-                videos.forEach((video, index) => {
-                    if (index !== 0) {
-                        observer.unobserve(video);
-                    }
-                });
-            }
-        });
-    }, options);
-
-    videos.forEach(video => {
-        observer.observe(video); // Observe each video
+        // Update src to include autoplay
+        firstMusicVideo.src = `${src}?autoplay=1`;
+        
+        // Optionally, scroll to the music video container
+        const targetContainer = document.querySelector('#musicVideoContainer');
+        targetContainer.scrollIntoView({ behavior: 'smooth' });
     });
 });
 
