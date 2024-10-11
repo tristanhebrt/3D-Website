@@ -10,11 +10,11 @@ Gallery:
 3 Wheels side by side: 1 for each category // one big wheel with sections
 
 ***Wheel:
-- Music video GIF
+- Music video GIF ✅
 
 ***Showcase:
-- music video
-- photography
+- music video ✅
+- photography ✅
 - graphics (covers) *play music when cover is hover
 Remove rest
 
