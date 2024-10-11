@@ -1,4 +1,4 @@
-const radius = 250;
+const radius = 500;
 const imgWidth = 300; // Width of the images
 const imgHeight = 300; // Height of the images
 const spacing = 50; // Increase this value for more space between images
@@ -143,7 +143,7 @@ function animateMomentum() {
 
 // Automatically rotate the container slowly
 function rotateAutomatically() {
-    currentAngleX += 0.03; // Adjust this value for rotation speed
+    currentAngleX += 0.1; // Adjust this value for rotation speed
     updateRotation(); // Update the rotation based on the current angle
     requestAnimationFrame(rotateAutomatically); // Continue the automatic rotation
 }

@@ -1,0 +1,21 @@
+Header :
+- Remove kamerakid text ✅
+- Nav buttons at the top ✅
+
+Home Page : 
+- Drooping animation on logo
+- Click 3D logo to open gallery
+
+Gallery:
+3 Wheels side by side: 1 for each category // one big wheel with sections
+
+***Wheel:
+- Music video GIF
+
+***Showcase:
+- music video
+- photography
+- graphics (covers) *play music when cover is hover
+Remove rest
+
+Smaller pictures

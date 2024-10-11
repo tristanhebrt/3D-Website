@@ -6,6 +6,7 @@ const initialOffsetTop = gallerySelectionContainer.offsetTop;
 const clonedContainer = gallerySelectionContainer.cloneNode(true);
 clonedContainer.classList.add('cloned');
 clonedContainer.style.opacity = '0'; // Start hidden
+clonedContainer.style.pointerEvents = 'none'; // Disable interaction when invisible
 document.body.appendChild(clonedContainer);
 
 function handleScroll() {
@@ -15,9 +16,11 @@ function handleScroll() {
     if (scrollPosition > initialOffsetTop + 550) {
         clonedContainer.style.opacity = '1'; // Fade in
         clonedContainer.style.transform = 'translateY(0)'; // Drop in smoothly
+        clonedContainer.style.pointerEvents = 'auto'; // Enable interaction when visible
     } else {
         clonedContainer.style.opacity = '0'; // Fade out
         clonedContainer.style.transform = 'translateY(-50px)'; // Move up when hidden
+        clonedContainer.style.pointerEvents = 'none'; // Disable interaction when hidden
     }
 }
 window.addEventListener('scroll', handleScroll);
@@ -58,7 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Autoplay Video =========================================
 // Autoplay Video =========================================
 document.addEventListener('DOMContentLoaded', function () {
     const musicVideosButton = document.querySelector('.gallerySelectionButton[href="#musicVideoContainer"]');
