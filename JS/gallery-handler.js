@@ -1,4 +1,4 @@
-const radius = 500;
+const radius = 600;
 const imgWidth = 300; // Width of the images
 const imgHeight = 300; // Height of the images
 const spacing = 50; // Increase this value for more space between images
