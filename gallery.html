@@ -61,7 +61,7 @@
         </div>
         <!-- Gallery Showcase -->
         <div class="gallery-showcase">
-            <div class="galleryContainer" id="musicVideoContainer">
+            <div class="galleryContainer musicVideoContainer" id="musicVideoContainer">
                 <h2>Music Videos</h2>
                 <div class="galleryRow">
                     <iframe src="https://www.youtube.com/embed/dtmKLzoJPDI" 
@@ -69,32 +69,22 @@
                         clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen>
                     </iframe>
-                </div>
-                <div class="galleryRow">
-                    <iframe src="https://www.youtube.com/embed/pYzkayO6lj8" 
-                        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-                        clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <div class="galleryRow">
-                    <iframe src="https://www.youtube.com/embed/9Oys6k-EyGM" 
-                        title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-                        clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
-            <div class="galleryContainer" id="graphicContainer">
-                <h2>Graphics</h2>
-                <div class="galleryRow">
-                    <img src="ASSETS/GalleryAssets/Cover/b6.jpg">
-                    <img src="ASSETS/GalleryAssets/Cover/lunerves.jpg">
-                    <img src="ASSETS/GalleryAssets/Cover/reign.jpg">
-                    <img src="ASSETS/GalleryAssets/Cover/suiiixide.jpg">
+                    <div class="galleryRowStack">
+                        <iframe style="width: 550px; height: 300px;" src="https://www.youtube.com/embed/pYzkayO6lj8" 
+                            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+                            clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                        <iframe style="width: 550px; height: 300px;" src="https://www.youtube.com/embed/9Oys6k-EyGM" 
+                            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
+                            clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    
                 </div>
             </div>
-            <div class="galleryContainer" id="photographyContainer">
+            <div class="galleryContainer photographyContainer" id="photographyContainer">
                 <h2>Photography</h2>
                 <div class="galleryRow">
                     <img src="ASSETS/GalleryAssets/Life/ottawasveryown/ottawasveryown1.jpg">
@@ -103,10 +93,22 @@
                     <img src="ASSETS/GalleryAssets/Life/ottawasveryown/ottawasveryown6.jpg">
                 </div>
                 <div class="galleryRow">
-                    <img src="ASSETS/GalleryAssets/Life/DSC00721.jpeg">
-                    <img src="ASSETS/GalleryAssets/Life/DSC00685.jpeg">
+                    
                     <img src="ASSETS/GalleryAssets/Life/DSC00365.jpeg">
                     <img src="ASSETS/GalleryAssets/Life/DSC00710.jpeg">
+                    <div class="galleryRowStack">
+                        <img class="landscape" src="ASSETS/GalleryAssets/Life/DSC00685.jpeg">
+                        <img class="landscape" src="ASSETS/GalleryAssets/Life/DSC00721.jpeg">
+                    </div>
+                </div>
+            </div>
+            <div class="galleryContainer graphicContainer" id="graphicContainer">
+                <h2>Graphics</h2>
+                <div class="galleryRow">
+                    <img src="ASSETS/GalleryAssets/Cover/b6.jpg">
+                    <img src="ASSETS/GalleryAssets/Cover/lunerves.jpg">
+                    <img src="ASSETS/GalleryAssets/Cover/reign.jpg">
+                    <img src="ASSETS/GalleryAssets/Cover/suiiixide.jpg">
                 </div>
             </div>
         </div>

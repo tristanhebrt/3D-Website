@@ -309,10 +309,30 @@ main {
     color: white;
     letter-spacing: 4px;
     text-align: center;
-    padding: 50px;
+    padding: 60px;
     margin: 10px;
     
     z-index: 10; /* Keep it above other content */
+}
+
+.photographyContainer img{
+    width:400px;
+    height: auto;
+}
+
+.photographyContainer .landscape{
+    width: 440px;
+}
+
+.graphicContainer img{
+    width:400px;
+    height: auto;
+}
+
+.galleryRowStack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .galleryRow {
