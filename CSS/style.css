@@ -472,8 +472,8 @@ footer {
     }
 
     html, body {
-        touch-action: all;
-        scrollbar-width: auto; /* Hide the scrollbar */
+        touch-action: manipulation; /* Allow scrolling */
+        scrollbar-width: auto; /* Restore scrollbar visibility */
     }
     
     html::-webkit-scrollbar {
