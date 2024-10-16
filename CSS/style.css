@@ -32,6 +32,11 @@ body {
     background-color: black; /* Use black background */
 }
 
+#indexBody {
+    height: 100%; 
+    overflow: hidden;
+}
+
 /*====================Header Area====================*/
 header {
     grid-area: header; /* Assign header to the header area */
@@ -74,6 +79,7 @@ nav {
 nav ol {
     justify-content: space-around; /* Spread the text evenly */
     display: flex; /* Use flexbox to ensure proper alignment */
+    flex-wrap: wrap;
     content: space-around; /* Spread items evenly when fixed */
     list-style: none; /* Removes the default bullets */
     margin: 0;
@@ -112,6 +118,10 @@ main {
     position: relative; /* Positioning context for child elements */
     height: auto; /* Allow height to adjust based on content */
     margin-bottom: 100px;
+}
+
+#galleryMain {
+    margin-top: 100px;
 }
 
 .text-container {
@@ -412,18 +422,52 @@ footer {
 
 /*====================Mobile====================*/
 @media screen and (max-width: 600px) {
+    #indexBody {
+        height: 120%; 
+        overflow: hidden;
+    }
+    
     .header-text-container { /* Enlarge header font */
-        font-size: 60px;
+        font-size: 25px;
+    }
+
+    #galleryMain {
+        margin-top: 40px;
     }
 
     .gallerySelectionContainer {
-        font-size: 60px;
+        font-size: 25px;
+        margin-top: 125px;
     }
 
     .gallerySelectionButton img {
         width: auto; 
         margin: 0px; 
-        padding: 0px; 
+        padding: 10px; 
         height: 50px;
+    }
+
+    .galleryContainer {
+        max-width: 350px;
+        padding-top: 0px;
+    }
+
+    .galleryContainer img{
+        max-width: 300px;
+    }
+
+    .galleryContainer h2 {
+        font-size: 20px;
+        letter-spacing: 10px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .galleryRow {
+        margin: 10px;
+    }
+
+    footer {
+        padding: 20px;
     }
 }
