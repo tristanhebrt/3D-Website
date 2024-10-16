@@ -47,8 +47,6 @@ header {
 }
 
 .header-text-container {
-    justify-items: center; /* Centers items horizontally */
-    align-items: center;   /* Centers items vertically */
     grid-template-columns: auto auto; /* Two columns for h1 and anchor (or more if needed) */
     gap: 20px; /* Optional: Adds space between items */
 }
@@ -279,7 +277,9 @@ main {
 }
 
 .gallerySelectionContainer ol {
-    justify-content: space-around; /* Spread the text evenly */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly; /* Spread the text evenly */
     content: space-around; /* Spread items evenly when fixed */
     list-style: none; /* Removes the default bullets */
     display: flex; /* Use flexbox to ensure proper alignment */
@@ -299,6 +299,13 @@ main {
 .gallerySelectionContainer ol li p:hover {
     transform: scale(1.2);
     text-shadow: 0px 0px 20px rgb(255, 255, 255);
+}
+
+.gallerySelectionButton img {
+    width: auto; 
+    margin: 0px; 
+    padding: 0px; 
+    height: 20px;
 }
 
 /*Gallery*/
@@ -348,8 +355,7 @@ main {
 }
 
 .galleryRow iframe {
-    width: 1100px;
-    height: 600px;
+    width: 550px; height: 300px;
 }
 
 .galleryContainer img {
@@ -402,4 +408,22 @@ footer {
     grid-column: 1;
     margin-top: 100px;
     z-index: 10; /* Keep it above other content */
+}
+
+/*====================Mobile====================*/
+@media screen and (max-width: 600px) {
+    .header-text-container { /* Enlarge header font */
+        font-size: 60px;
+    }
+
+    .gallerySelectionContainer {
+        font-size: 60px;
+    }
+
+    .gallerySelectionButton img {
+        width: auto; 
+        margin: 0px; 
+        padding: 0px; 
+        height: 50px;
+    }
 }
