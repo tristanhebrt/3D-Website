@@ -1,3 +1,21 @@
+/* Define default (dark) theme colors */
+:root {
+    --background-color: black;
+    --text-color: white;
+    --highlight-color: rgba(255, 255, 255, 0.1);
+    --link-color: white;
+    --shadow-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Define light theme colors */
+[data-theme="light"] {
+    --background-color: white;
+    --text-color: black;
+    --highlight-color: rgb(0, 0, 0);
+    --link-color: black;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -9,6 +27,8 @@ html, body {
     touch-action: none;
     scroll-behavior: smooth;
     scrollbar-width: none; /* Hide the scrollbar */
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 html::-webkit-scrollbar {
@@ -28,8 +48,8 @@ body {
     overflow-x: hidden; /* Prevent horizontal overflow */
     overflow-y: auto; /* Allow vertical scrolling */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: white;
-    background-color: black; /* Use black background */
+    background-color: var(--background-color); /* Use variable for background */
+    color: var(--text-color); /* Use variable for text */
 }
 
 #indexBody {
@@ -43,12 +63,14 @@ header {
     display: grid;
     grid-template-columns: repeat(1, 1fr); /* 2 equal columns */
     grid-template-rows: auto; /* Rows will adjust automatically */
-    color: white;
+    color: var(--text-color);
+    font-weight: 600;
     letter-spacing: 4px;
     text-align: center;
-    margin-top: 30px;
     margin-bottom: 150px;
     z-index: 11; /* Keep it above other content */
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .header-text-container {
@@ -62,7 +84,7 @@ header {
 
 .header-text-container a {
     grid-column: 2; /* Occupy the second column */
-    color: white;
+    color: var(--link-color);
     text-decoration: none;
 }
 
@@ -92,7 +114,7 @@ nav ol li p {
 
 nav ol li p:hover {
     transform: scale(1.2);
-    text-shadow: 0px 0px 20px rgb(255, 255, 255);
+    text-shadow: 0px 0px 20px var(--shadow-color);
 }
 
 /* Initial state of the fade-in links */
@@ -107,6 +129,49 @@ nav ol li p:hover {
     opacity: 1; /* Fade in to fully visible */
     pointer-events: auto; /* Enable interaction when visible */
 }
+
+/* Button container styling */
+.theme-toggle-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+/* Button styling */
+#theme-toggle {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: none;
+    padding: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: -1px -1px 4px var(--shadow-color);
+    transition: background-color 0.3s ease;
+}
+
+#theme-toggle::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#theme-toggle:hover {
+    background-color: var(--link-color);
+}
+
+#theme-toggle:hover::after {
+    content: attr(data-hover-text); /* Use the data-hover-text attribute */
+    opacity: 1;
+    color: #000; /* Change the color if needed */
+}
+
 
 /*====================Main Area====================*/
 main {
@@ -131,7 +196,7 @@ main {
     grid-template-rows: auto; /* Rows will adjust automatically */
     margin-left: 20%;
 
-    color: white;
+    color: var(--text-color);
     letter-spacing: 4px;
 }
 
@@ -203,8 +268,7 @@ main {
     position: absolute; /* Position the circle absolutely */
     width: 1000px; /* Set the desired width */
     height: 1000px; /* Set the desired height */
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 0, 0, 0) 50%); /* Radial gradient for fading edges */
-    border-radius: 50%; /* Make it circular */
+    background: radial-gradient(circle, var(--highlight-color) 0%, rgba(255, 0, 0, 0) 50%); /* Radial gradient for fading edges */    border-radius: 50%; /* Make it circular */
     z-index: 0; /* Position below the container */
 }
 
@@ -251,7 +315,7 @@ main {
     line-height: 200px;
     font-size: 50px;
     text-align: center;
-    box-shadow: 0 0 white;
+    box-shadow: 0 0 var(--text-color);
     filter: drop-shadow(0 0 4px rgb(0, 0, 0)); /* Modern alternative to box-shadow */
     border-radius: 5px;
 }
@@ -265,7 +329,7 @@ main {
     letter-spacing: 4px;
     text-align: center;
     font-weight: 200;
-    text-shadow: 0px 0px 20px rgb(255, 255, 255);
+    text-shadow: 0px 0px 20px var(--shadow-color);
 }
 
 /*Gallery Selection*/
@@ -274,8 +338,8 @@ main {
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top: 0;
-    background-color: black;
-    
+    background-color: var(--background-color);
+    color: var(--link-color); 
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(1, 1fr); /* 2 equal columns */
@@ -283,11 +347,11 @@ main {
     width: 100%;
     justify-content: space-around; /* Spread the text evenly */
     margin-top: 230px;
-    color: white;
     font-size: 17px;
-    font-weight: 300;
+    font-weight: 600;
     letter-spacing: 4px;
     z-index: 12; /* Keep it above other content */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .gallerySelectionContainer ol {
@@ -306,13 +370,13 @@ main {
 }
 
 .gallerySelectionContainer ol li p {
-    color: white; /* Adjust color as needed */
+    color: var(--link-color);
     transition: transform 0.5s ease;
 }
 
 .gallerySelectionContainer ol li p:hover {
     transform: scale(1.2);
-    text-shadow: 0px 0px 20px rgb(255, 255, 255);
+    text-shadow: 0px 0px 20px var(--shadow-color);
 }
 
 .gallerySelectionButton img {
@@ -325,7 +389,7 @@ main {
 /*Gallery*/
 .galleryContainer {
     grid-area: gallery;
-    color: white;
+    color: var(--text-color);
     letter-spacing: 4px;
     text-align: center;
     padding: 60px;
@@ -337,6 +401,7 @@ main {
 .photographyContainer img{
     width:400px;
     height: auto;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 1);
 }
 
 .photographyContainer .landscape{
@@ -366,10 +431,12 @@ main {
     max-width: 100%;
     height: auto;
     object-fit:contain;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 1);
 }
 
 .galleryRow iframe {
     width: 550px; height: 300px;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 1);
 }
 
 .galleryContainer img {
@@ -414,7 +481,7 @@ main {
 /*====================Footer Area====================*/
 footer {
     grid-area: footer; /* Assign footer to the footer area */
-    color: white;
+    color: var(--text-color);
     letter-spacing: 4px;
     text-align: center;
     padding: 0px;
@@ -510,6 +577,7 @@ footer {
 
     header {
         margin-bottom: 60px;
+        background-color: var(--background-color);
     }
 
     #drag-container, #spin-container {
