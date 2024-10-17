@@ -1,4 +1,4 @@
-const imgWidth = 100; // Width of the images
+const imgWidth = 300; // Width of the images
 const imgHeight = 300; // Height of the images
 
 // Retrieve the spacing value from the CSS variable
