@@ -29,34 +29,29 @@ const logoImage = document.getElementById('logoImage');
 
 // Function to update the image sources based on the current theme
 function updateImageSources(theme) {
-    // Update mailImage if it exists
     if (upArrowImage) {
         const arrow = theme === 'light' ? lightThemeImages : darkThemeImages;
         upArrowImage.src = arrow[0]; // arrow in list
     }
 
-    // Update mailImage if it exists
     if (mailImage) {
         const mail = theme === 'light' ? lightThemeImages : darkThemeImages;
         mailImage.src = mail[1]; // mail in list
     }
 
-    // Update atImage if it exists
     if (atImage) {
         const at = theme === 'light' ? lightThemeImages : darkThemeImages;
         atImage.src = at[2]; // @ in list
     }
 
-    // Update logoImage if it exists
-    if (atImage) {
+    if (logoImage) {
         const logo = theme === 'light' ? lightThemeImages : darkThemeImages;
         logoImage.src = logo[3]; // logo in list
     }
 }
 
-// Set the initial theme based on preference
-const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-let currentTheme = prefersDarkScheme ? 'dark' : 'light';
+// Set the initial theme based on preference or localStorage
+let currentTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? 'dark' : 'light');
 document.documentElement.setAttribute('data-theme', currentTheme);
 updateImageSources(currentTheme);
 
@@ -75,6 +70,9 @@ toggleButton.addEventListener('click', () => {
 
     // Update image sources based on the new theme
     updateImageSources(currentTheme);
+
+    // Save the current theme in localStorage
+    localStorage.setItem('theme', currentTheme);
 });
 
 // Change text on hover
@@ -86,11 +84,6 @@ toggleButton.addEventListener('mouseout', () => {
     toggleButton.textContent = currentTheme === 'light' ? lightModeText : darkModeText;
 });
 
-
-
-
-
-
 // For the Preloader
 window.addEventListener('load', function() {
     // Hide the preloader
@@ -98,4 +91,4 @@ window.addEventListener('load', function() {
     
     // Show the content
     document.getElementById('content').style.display = 'block';
-  });
+});
