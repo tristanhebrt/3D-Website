@@ -247,7 +247,7 @@ main {
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
     position: absolute; /* Set to absolute to position correctly */
-    top: 70%; /* Center vertically */
+    top: 50%; /* Center vertically */
     left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Adjust for centering */
     height: 100%; /* Allow it to fill available space */
@@ -528,7 +528,7 @@ footer {
     }
 
     header ol {
-        gap: 5px;
+        /* gap: 5px; */
     }
 
     #galleryMain {
@@ -579,6 +579,11 @@ footer {
     
     html::-webkit-scrollbar {
         display: auto; /* Hide the scrollbar */
+    }
+
+    /* Container 3D */
+    #container3D {
+        top: 40%;
     }
 
     /* Disable transforms */
