@@ -85,3 +85,17 @@ toggleButton.addEventListener('mouseover', () => {
 toggleButton.addEventListener('mouseout', () => {
     toggleButton.textContent = currentTheme === 'light' ? lightModeText : darkModeText;
 });
+
+
+
+
+
+
+// For the Preloader
+window.addEventListener('load', function() {
+    // Hide the preloader
+    document.getElementById('preloader').style.display = 'none';
+    
+    // Show the content
+    document.getElementById('content').style.display = 'block';
+  });
