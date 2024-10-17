@@ -247,7 +247,7 @@ main {
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
     position: absolute; /* Set to absolute to position correctly */
-    top: 300px; /* Center vertically */
+    top: 70%; /* Center vertically */
     left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Adjust for centering */
     height: 100%; /* Allow it to fill available space */
@@ -270,6 +270,10 @@ main {
     height: 1000px; /* Set the desired height */
     background: radial-gradient(circle, var(--highlight-color) 0%, rgba(255, 0, 0, 0) 50%); /* Radial gradient for fading edges */    border-radius: 50%; /* Make it circular */
     z-index: 0; /* Position below the container */
+}
+
+#indexCircle {
+    top: -210px;
 }
 
 #galleryCircle {
@@ -503,9 +507,19 @@ footer {
         scrollbar-width: auto; /* Restore scrollbar visibility */
         overflow-x: hidden;
     }
+
+    header {
+        margin-bottom: 60px;
+        background-color: var(--background-color);
+    }
     
     #indexBody {
         height: 100%; 
+    }
+
+    #indexHeader {
+        box-shadow: none;
+        background-color: none;
     }
     
     .header-text-container { /* Enlarge header font */
@@ -514,7 +528,7 @@ footer {
     }
 
     header ol {
-        gap: 10px;
+        gap: 5px;
     }
 
     #galleryMain {
@@ -579,11 +593,6 @@ footer {
     }
 
     /* Smaller gallery wheel */
-
-    header {
-        margin-bottom: 60px;
-        background-color: var(--background-color);
-    }
 
     #drag-container, #spin-container {
         height: 200px;
