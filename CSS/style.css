@@ -327,7 +327,7 @@ main {
     font-weight: 600;
     letter-spacing: 4px;
     z-index: 12; /* Keep it above other content */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5), 0px -4px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.5);
 }
 
 .gallerySelectionContainer ol {
@@ -606,7 +606,6 @@ footer {
         font-size: 20px;
         margin-top: 125px;
         margin-bottom: 200px;
-        box-shadow: 0px -4px 5px rgba(0, 0, 0, 0.5);
     }
 
     .gallerySelectionButton img {
