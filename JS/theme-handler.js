@@ -45,12 +45,17 @@ function updateImageSources(theme) {
     });
 
 
-    //Breaks the theme button
-    //const mail = theme === 'light' ? lightThemeMail : darkThemeMail;
-    //mailImage.src = mail;
+    // Update mailImage if it exists
+    if (mailImage) {
+        const mail = theme === 'light' ? lightThemeMail : darkThemeMail;
+        mailImage.src = mail[0]; // Ensure you access the first (and only) element in the array
+    }
 
-    //const at = theme === 'light' ? lightThemeAt : darkThemeAt;
-    //atImage.src = at;
+    // Update atImage if it exists
+    if (atImage) {
+        const at = theme === 'light' ? lightThemeAt : darkThemeAt;
+        atImage.src = at[0]; // Ensure you access the first (and only) element in the array
+    }
 }
 
 // Set the initial theme based on preference
