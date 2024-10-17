@@ -6,69 +6,51 @@ let hoverTextDark = "🌙"; // Text for hover in dark mode
 
 // Define the image sources for each theme
 const lightThemeImages = [
-    "ASSETS/Text/dblUpArrowBlack.png", // Image for light theme
+    "ASSETS/Text/dblUpArrowBlack.png", // Light theme arrow
+    "ASSETS/Text/mailIconBlack.png", // Light theme mail
+    "ASSETS/Text/@IconBlack.png", // Light theme @
+    "ASSETS/Text/logoBlack.png", // Light theme logo
 ];
 
 const darkThemeImages = [
-    "ASSETS/Text/dblUpArrowWhite.png", // Image for dark theme
-];
-
-const lightThemeMail = [
-    "ASSETS/Text/mailIconBlack.png", // Image for light theme
-];
-
-const darkThemeMail = [
-    "ASSETS/Text/mailIcon.png", // Image for dark theme
-];
-
-const lightThemeAt = [
-    "ASSETS/Text/@IconBlack.png", // Image for light theme
-];
-
-const darkThemeAt = [
-    "ASSETS/Text/@Icon.png", // Image for dark theme
-];
-
-const lightThemeLogo = [
-    "ASSETS/Text/logoBlack.png", // Image for light theme
-];
-
-const darkThemeLogo = [
-    "ASSETS/Text/logoWhite.png", // Image for dark theme
+    "ASSETS/Text/dblUpArrowWhite.png", // Dark theme arrow
+    "ASSETS/Text/mailIcon.png", // Dark theme mail
+    "ASSETS/Text/@Icon.png", // Dark theme @
+    "ASSETS/Text/logoWhite.png", // Dark theme logo
 ];
 
 // Get the theme toggle button and image elements
 const toggleButton = document.getElementById('theme-toggle');
-const gallerySelectionImages = document.querySelectorAll('.gallerySelectionButton img');
 
+const upArrowImage = document.getElementById('upArrowImage');
 const mailImage = document.getElementById('mailImage');
 const atImage = document.getElementById('@Image');
 const logoImage = document.getElementById('logoImage');
 
 // Function to update the image sources based on the current theme
 function updateImageSources(theme) {
-    const images = theme === 'light' ? lightThemeImages : darkThemeImages;
-    
-    gallerySelectionImages.forEach((img, index) => {
-        img.src = images[index];
-    });
+    // Update mailImage if it exists
+    if (upArrowImage) {
+        const arrow = theme === 'light' ? lightThemeImages : darkThemeImages;
+        upArrowImage.src = arrow[0]; // arrow in list
+    }
 
     // Update mailImage if it exists
     if (mailImage) {
-        const mail = theme === 'light' ? lightThemeMail : darkThemeMail;
-        mailImage.src = mail[0]; // Ensure you access the first (and only) element in the array
+        const mail = theme === 'light' ? lightThemeImages : darkThemeImages;
+        mailImage.src = mail[1]; // mail in list
     }
 
     // Update atImage if it exists
     if (atImage) {
-        const at = theme === 'light' ? lightThemeAt : darkThemeAt;
-        atImage.src = at[0]; // Ensure you access the first (and only) element in the array
+        const at = theme === 'light' ? lightThemeImages : darkThemeImages;
+        atImage.src = at[2]; // @ in list
     }
 
     // Update logoImage if it exists
     if (atImage) {
-        const logo = theme === 'light' ? lightThemeLogo : darkThemeLogo;
-        logoImage.src = logo[0]; // Ensure you access the first (and only) element in the array
+        const logo = theme === 'light' ? lightThemeImages : darkThemeImages;
+        logoImage.src = logo[3]; // logo in list
     }
 }
 
