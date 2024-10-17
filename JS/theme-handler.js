@@ -13,16 +13,44 @@ const darkThemeImages = [
     "ASSETS/Text/dblUpArrowWhite.png", // Image for dark theme
 ];
 
+const lightThemeMail = [
+    "ASSETS/Text/mailIconBlack.png", // Image for light theme
+];
+
+const darkThemeMail = [
+    "ASSETS/Text/mailIcon.png", // Image for dark theme
+];
+
+const lightThemeAt = [
+    "ASSETS/Text/@IconBlack.png", // Image for light theme
+];
+
+const darkThemeAt = [
+    "ASSETS/Text/@Icon.png", // Image for dark theme
+];
+
 // Get the theme toggle button and image elements
 const toggleButton = document.getElementById('theme-toggle');
 const gallerySelectionImages = document.querySelectorAll('.gallerySelectionButton img');
 
+const mailImage = document.getElementById('mailImage');
+const atImage = document.getElementById('@Image');
+
 // Function to update the image sources based on the current theme
 function updateImageSources(theme) {
     const images = theme === 'light' ? lightThemeImages : darkThemeImages;
+    
     gallerySelectionImages.forEach((img, index) => {
         img.src = images[index];
     });
+
+
+    //Breaks the theme button
+    //const mail = theme === 'light' ? lightThemeMail : darkThemeMail;
+    //mailImage.src = mail;
+
+    //const at = theme === 'light' ? lightThemeAt : darkThemeAt;
+    //atImage.src = at;
 }
 
 // Set the initial theme based on preference

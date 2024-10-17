@@ -30,13 +30,27 @@
     <main>
         <div class="text-container">
             <dic style="grid-row: 1;" class="social-container">
-                <a href="mailto:kamerakidstudios@gmail.com"><img src="ASSETS/Text/mailIcon.png"></a>
-                <p>kamerakidstudios@gmail.com</p>
+                <a href="mailto:kamerakidstudios@gmail.com"><img id="mailImage" src="ASSETS/Text/mailIcon.png"></a>
+                
             </dic>
             <dic style="grid-row: 2;" class="social-container">
-                <a href="https://www.instagram.com/kamerakidstudios/"><img src="ASSETS/Text/@Icon.png"></a>
-                <p>kamerakidstudios</p>
+                <a href="https://www.instagram.com/kamerakidstudios/"><img id="@Image" src="ASSETS/Text/@Icon.png"></a>
+                
             </dic>
+        </div>
+        <div class="contactFormContainer">
+            <form action="contact-form-handler.php" method="POST" class="contactForm">
+                <label for="first-name">Name</label>
+                <input type="text" id="name" name="first-name" placeholder="Name" required>
+            
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+            
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Message" required></textarea>
+            
+                <button type="submit">Send</button>
+            </form>  
         </div>
     </main>
     <footer>

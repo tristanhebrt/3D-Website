@@ -2,7 +2,8 @@
 :root {
     --background-color: black;
     --text-color: white;
-    --highlight-color: rgba(255, 255, 255, 0.1);
+    --circle-color: rgba(255, 255, 255, 0.1);
+    --highlight-color: rgba(0, 0, 0, 0.493);
     --link-color: white;
     --shadow-color: rgba(255, 255, 255, 0.5);
 }
@@ -11,7 +12,8 @@
 [data-theme="light"] {
     --background-color: white;
     --text-color: black;
-    --highlight-color: rgba(0, 0, 0, 0.473);
+    --circle-color: rgba(0, 0, 0, 0.473);
+    --highlight-color: rgba(0, 0, 0, 0.479);
     --link-color: black;
     --shadow-color: rgba(0, 0, 0, 0.5);
 }
@@ -189,36 +191,6 @@ main {
     margin-top: 100px;
 }
 
-.text-container {
-    display: grid;
-    grid-area: main;
-    grid-template-columns: repeat(2, 1fr); /* 2 equal columns */
-    grid-template-rows: auto; /* Rows will adjust automatically */
-    margin-left: 20%;
-
-    color: var(--text-color);
-    letter-spacing: 4px;
-}
-
-.text-container h1{
-    font-size: 50px;
-    font-weight: 400;
-    text-transform: uppercase;
-    width: 700px;
-}
-
-.text-container p{
-    font-size: 20px;
-    font-weight: 200;
-    width: 700px;
-}
-
-.text-container iframe {
-    margin-top: 30px;
-    width: 700px;
-    height: 400px;
-}
-
 .social-container {
     display: flex;
     justify-content: center;
@@ -268,7 +240,7 @@ main {
     position: absolute; /* Position the circle absolutely */
     width: 1000px; /* Set the desired width */
     height: 1000px; /* Set the desired height */
-    background: radial-gradient(circle, var(--highlight-color) 0%, rgba(255, 0, 0, 0) 50%); /* Radial gradient for fading edges */    border-radius: 50%; /* Make it circular */
+    background: radial-gradient(circle, var(--circle-color) 0%, rgba(255, 0, 0, 0) 50%); /* Radial gradient for fading edges */    border-radius: 50%; /* Make it circular */
     z-index: 0; /* Position below the container */
 }
 
@@ -482,6 +454,97 @@ main {
     }
 }
 
+/*====================Contact Page====================*/
+.text-container {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    padding: 20px;
+}
+
+/* Contact form */
+.contactFormContainer {
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    text-align: left; /* Optional: Center align the text and button */
+    width: 100%;
+}
+
+.contactForm {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px; /* Adds space between the form fields */
+    width: 50%; /* Limit the form width */
+    padding: 10px;
+    
+    background-color: var(--text-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+}
+
+/* Styling the form labels */
+.contactForm label {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 4px;
+
+    color: var(--background-color); /* Custom color for labels */
+}
+
+/* Styling text inputs */
+.contactForm input[type="text"],
+.contactForm input[type="email"] {
+    font-size: 15px;
+    font-weight: 400;
+    
+    padding: 5px;
+    border: 2px solid #ccc; /* Border style */
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding doesn't affect total width */
+    transition: border-color 0.3s ease;
+}
+
+/* Styling the message text area */
+.contactForm textarea {
+    font-size: 15px;
+    font-weight: 400;
+    
+    padding: 5px;
+    border: 2px solid #ccc;
+    width: 100%;
+    height: 150px; /* Sets a fixed height for the textarea */
+    box-sizing: border-box;
+    resize: vertical; /* Allows vertical resizing only */
+    transition: border-color 0.3s ease;
+}
+
+/* Add a border color change on focus */
+.contactForm input[type="text"]:focus,
+.contactForm input[type="email"]:focus,
+.contactForm textarea:focus {
+    border-color: var(--highlight-color);
+    outline: none; /* Remove default outline */
+}
+
+/* Styling the submit button */
+.contactForm button {
+    padding: 10px 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 4px;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+
+/* Button hover effect */
+.contactForm button:hover {
+    background-color: var(--highlight-color);
+}
+
 /*====================Footer Area====================*/
 footer {
     grid-area: footer; /* Assign footer to the footer area */
@@ -576,6 +639,11 @@ footer {
     
     html::-webkit-scrollbar {
         display: auto; /* Hide the scrollbar */
+    }
+
+    /* Contact Page */
+    .contactForm {
+        width: 80%; /* Limit the form width */
     }
 
     /* Container 3D */
