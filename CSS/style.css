@@ -498,6 +498,7 @@ main {
     font-size: 15px;
     font-weight: 400;
     
+    background-color: var(--text-color);
     padding: 5px;
     border: 2px solid #ccc; /* Border style */
     width: 100%;
@@ -510,6 +511,7 @@ main {
     font-size: 15px;
     font-weight: 400;
     
+    background-color: var(--text-color);
     padding: 5px;
     border: 2px solid #ccc;
     width: 100%;
@@ -533,9 +535,9 @@ main {
     background-color: var(--background-color);
     color: var(--text-color);
     border: none;
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: 4px;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 10px;
     cursor: pointer;
     transition: background-color 0.5s ease;
 }
