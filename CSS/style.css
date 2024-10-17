@@ -182,7 +182,7 @@ main {
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
     position: absolute; /* Set to absolute to position correctly */
-    top: 50%; /* Center vertically */
+    top: 60%; /* Center vertically */
     left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Adjust for centering */
     height: 100%; /* Allow it to fill available space */
@@ -453,14 +453,18 @@ footer {
     .gallerySelectionContainer {
         font-size: 20px;
         margin-top: 125px;
-        margin-bottom: 150px;
+        margin-bottom: 200px;
     }
 
     .gallerySelectionButton img {
         width: auto; 
-        margin: 0px; 
-        padding: 10px; 
-        height: 40px;
+        margin-right: 1px;
+        height: 15px;
+
+    }
+
+    .gallerySelectionButton p {
+        margin-right: 10px;
     }
 
     .galleryContainer {
@@ -493,7 +497,7 @@ footer {
 
     /* Disable transforms */
     .gallerySelectionContainer ol li p:hover {
-        transform: scale(1);
+        transform: none;
         text-shadow: 0px 0px 0px rgb(255, 255, 255);
     }
 
