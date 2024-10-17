@@ -90,6 +90,10 @@ header {
     text-decoration: none;
 }
 
+#contactHeader {
+    margin-bottom: 0px;
+}
+
 /* Nav */
 nav {
     top: 0; /* Make it stay at the top */
@@ -207,10 +211,6 @@ main {
 
 .social-container img {
     max-width: 100px;
-}
-
-.social-container p {
-    margin: 20px;
 }
 
 /* 3D Container */

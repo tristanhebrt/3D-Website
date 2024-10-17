@@ -29,12 +29,21 @@ const darkThemeAt = [
     "ASSETS/Text/@Icon.png", // Image for dark theme
 ];
 
+const lightThemeLogo = [
+    "ASSETS/Text/logoBlack.png", // Image for light theme
+];
+
+const darkThemeLogo = [
+    "ASSETS/Text/logoWhite.png", // Image for dark theme
+];
+
 // Get the theme toggle button and image elements
 const toggleButton = document.getElementById('theme-toggle');
 const gallerySelectionImages = document.querySelectorAll('.gallerySelectionButton img');
 
 const mailImage = document.getElementById('mailImage');
 const atImage = document.getElementById('@Image');
+const logoImage = document.getElementById('logoImage');
 
 // Function to update the image sources based on the current theme
 function updateImageSources(theme) {
@@ -43,7 +52,6 @@ function updateImageSources(theme) {
     gallerySelectionImages.forEach((img, index) => {
         img.src = images[index];
     });
-
 
     // Update mailImage if it exists
     if (mailImage) {
@@ -55,6 +63,12 @@ function updateImageSources(theme) {
     if (atImage) {
         const at = theme === 'light' ? lightThemeAt : darkThemeAt;
         atImage.src = at[0]; // Ensure you access the first (and only) element in the array
+    }
+
+    // Update logoImage if it exists
+    if (atImage) {
+        const logo = theme === 'light' ? lightThemeLogo : darkThemeLogo;
+        logoImage.src = logo[0]; // Ensure you access the first (and only) element in the array
     }
 }
 
