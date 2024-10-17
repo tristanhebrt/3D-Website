@@ -422,12 +422,14 @@ footer {
 
 /*====================Mobile====================*/
 @media screen and (max-width: 600px) {
+    html, body {
+        touch-action: auto; /* Allow scrolling */
+        scrollbar-width: auto; /* Restore scrollbar visibility */
+        overflow-x: hidden;
+    }
+    
     #indexBody {
         height: 120%; 
-    }
-
-    body {
-        overflow-x: hidden;
     }
     
     .header-text-container { /* Enlarge header font */
@@ -473,13 +475,19 @@ footer {
     footer {
         padding: 20px;
     }
-
-    html, body {
-        touch-action: auto; /* Allow scrolling */
-        scrollbar-width: auto; /* Restore scrollbar visibility */
-    }
     
     html::-webkit-scrollbar {
         display: auto; /* Hide the scrollbar */
+    }
+
+    /* All transforms */
+    .gallerySelectionContainer ol li p:hover {
+        transform: scale(1);
+        text-shadow: 0px 0px 0px rgb(255, 255, 255);
+    }
+
+    nav ol li p:hover {
+        transform: scale(1.1);
+        text-shadow: 0px 0px 10px rgb(255, 255, 255);
     }
 }
