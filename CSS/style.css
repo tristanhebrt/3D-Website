@@ -525,10 +525,7 @@ footer {
     .header-text-container { /* Enlarge header font */
         font-size: 20px;
         padding: 20px;
-    }
-
-    header ol {
-        /* gap: 5px; */
+        letter-spacing: 3px;
     }
 
     #galleryMain {
@@ -583,7 +580,7 @@ footer {
 
     /* Container 3D */
     #container3D {
-        top: 65%;
+        top: 75%;
     }
 
     /* Disable transforms */
