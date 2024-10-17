@@ -598,6 +598,11 @@ footer {
         overflow-x: hidden;
     }
 
+    #preloader img {
+        width: 100px;
+        height: auto;
+    }
+
     header {
         margin-bottom: 60px;
         background-color: var(--background-color);
