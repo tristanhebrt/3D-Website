@@ -525,6 +525,7 @@ footer {
         font-size: 20px;
         margin-top: 125px;
         margin-bottom: 200px;
+        box-shadow: 0px -4px 5px rgba(0, 0, 0, 0.5);
     }
 
     .gallerySelectionButton img {
