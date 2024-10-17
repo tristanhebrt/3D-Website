@@ -1,7 +1,19 @@
-const radius = 600;
-const imgWidth = 300; // Width of the images
+const imgWidth = 100; // Width of the images
 const imgHeight = 300; // Height of the images
-const spacing = 50; // Increase this value for more space between images
+
+// Retrieve the spacing value from the CSS variable
+const spacingElement = document.getElementById('spacing-element');
+const spacingValue = getComputedStyle(spacingElement).getPropertyValue('--spacing') || '50px'; // Fallback if not set
+
+// Convert spacing value to a number
+const spacing = parseInt(spacingValue, 10); // Convert to integer
+
+// Retrieve the radius value from the CSS variable
+const radiusElement = document.getElementById('spacing-element');
+const radiusValue = getComputedStyle(radiusElement).getPropertyValue('--radius') || '50px'; // Fallback if not set
+
+// Convert radius value to a number
+const radius = parseInt(radiusValue, 10); // Convert to integer
 
 let dragging = false;
 let lastX = 0;

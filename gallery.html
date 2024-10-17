@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
+    <div id="spacing-element"></div>
     <header>
         <div class="header-text-container">
             <nav>
@@ -25,7 +26,7 @@
         </div>
     </header>
     <main id="galleryMain">
-        <div class="circle-overlay" style="top: -350px;"></div>
+        <div class="circle-overlay" id="galleryCircle"></div>
         <!-- Gallery Wheel -->
         <div id="drag-container">
             <div id="spin-container">
@@ -53,6 +54,10 @@
         <!-- Gallery Selection Container -->
         <div class="gallerySelectionContainer">
             <ol>
+                
+                <li>
+                    <a href="#top" class="gallerySelectionButton"><img src="ASSETS/Text/dblUpArrow.jpg"></a>
+                </li>
                 <li>
                     <a href="#musicVideoContainer" class="gallerySelectionButton"><p>Music Videos</p></a>
                 </li>
@@ -61,9 +66,6 @@
                 </li>
                 <li>
                     <a href="#graphicContainer" class="gallerySelectionButton"><p>Graphics</p></a>
-                </li>
-                <li>
-                    <a href="#top" class="gallerySelectionButton"><img src="ASSETS/Text/dblUpArrow.jpg"></a>
                 </li>
             </ol>
         </div>
