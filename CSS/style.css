@@ -424,7 +424,10 @@ footer {
 @media screen and (max-width: 600px) {
     #indexBody {
         height: 120%; 
-        overflow: hidden;
+    }
+
+    body {
+        overflow-x: hidden;
     }
     
     .header-text-container { /* Enlarge header font */
@@ -472,7 +475,7 @@ footer {
     }
 
     html, body {
-        touch-action: manipulation; /* Allow scrolling */
+        touch-action: auto; /* Allow scrolling */
         scrollbar-width: auto; /* Restore scrollbar visibility */
     }
     
