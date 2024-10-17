@@ -580,7 +580,7 @@ footer {
 
     /* Container 3D */
     #container3D {
-        top: 75%;
+        padding-top: 100px;
     }
 
     /* Disable transforms */
