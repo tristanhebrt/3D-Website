@@ -57,9 +57,9 @@ function animate() {
     requestAnimationFrame(animate);
 
     if (object) {
-        // Calculate target rotation based on mouse position
-        targetRotation.y = 1.6 + (mouseX / window.innerWidth) * 3;
-        targetRotation.x = -1 + (mouseY * 2.5 / window.innerHeight);
+        // Calculate target rotation based on input position (mouse or touch)
+        targetRotation.y = 1.6 + (inputX / window.innerWidth) * 3;
+        targetRotation.x = -1 + (inputY * 2.5 / window.innerHeight);
         
         // Smoothly interpolate the object's rotation towards the target rotation
         object.rotation.x += (targetRotation.x - object.rotation.x) * rotationDampening;
@@ -72,23 +72,40 @@ function animate() {
 let targetRotation = new THREE.Euler(Math.PI / 0.54, Math.PI, 0); // Set the default rotation
 let rotationDampening = 0.01; // Adjust this value for smoothness
 
+// Variables for tracking input (mouse or touch)
+let inputX = window.innerWidth / 2;
+let inputY = window.innerHeight / 2;
+
 // Mouse movement listener
-let mouseX = window.innerWidth / 2;
-let mouseY = window.innerHeight / 2;
 document.onmousemove = (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+    inputX = e.clientX;
+    inputY = e.clientY;
 };
 
-// Event listener for when the cursor leaves the window
+// Touch movement listeners for mobile
+document.addEventListener('touchmove', (e) => {
+    // Prevent default to avoid scrolling while interacting with 3D
+    e.preventDefault();
+    if (e.touches.length > 0) {
+        inputX = e.touches[0].clientX;
+        inputY = e.touches[0].clientY;
+    }
+}, { passive: false });
+
+// Event listener for when the cursor leaves the window (also handles touch end)
 window.addEventListener('mouseout', (e) => {
-    // Check if the cursor actually left the window (not just entered a child element)
     if (!e.relatedTarget || e.relatedTarget.nodeName === "HTML") {
         if (object) {
-            mouseX = window.innerWidth / 2;
-            mouseY = window.innerHeight / 2;
+            inputX = window.innerWidth / 2;
+            inputY = window.innerHeight / 2;
         }
     }
+});
+
+// Touch end listener for mobile
+document.addEventListener('touchend', () => {
+    inputX = window.innerWidth / 2;
+    inputY = window.innerHeight / 2;
 });
 
 // Resize event listener
