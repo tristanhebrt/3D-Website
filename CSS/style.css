@@ -247,7 +247,7 @@ main {
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
     position: absolute; /* Set to absolute to position correctly */
-    top: 60%; /* Center vertically */
+    top: 300px; /* Center vertically */
     left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Adjust for centering */
     height: 100%; /* Allow it to fill available space */
@@ -505,7 +505,7 @@ footer {
     }
     
     #indexBody {
-        height: 120%; 
+        height: 100%; 
     }
     
     .header-text-container { /* Enlarge header font */
