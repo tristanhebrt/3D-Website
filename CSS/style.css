@@ -586,6 +586,11 @@ footer {
         box-shadow: none;
         background-color: none;
     }
+
+    #contactHeader {
+        box-shadow: none;
+        background-color: none;
+    }
     
     .header-text-container { /* Enlarge header font */
         font-size: 20px;
@@ -650,7 +655,7 @@ footer {
 
     /* Container 3D */
     #container3D {
-        padding-top: 100px;
+        padding-top: 600px;
     }
 
     /* Disable transforms */
