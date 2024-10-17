@@ -10,7 +10,7 @@ const spacing = parseInt(spacingValue, 10); // Convert to integer
 
 // Retrieve the radius value from the CSS variable
 const radiusElement = document.getElementById('spacing-element');
-const radiusValue = getComputedStyle(radiusElement).getPropertyValue('--radius') || '50px'; // Fallback if not set
+const radiusValue = getComputedStyle(radiusElement).getPropertyValue('--radius') || '300px'; // Fallback if not set
 
 // Convert radius value to a number
 const radius = parseInt(radiusValue, 10); // Convert to integer
