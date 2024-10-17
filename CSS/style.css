@@ -513,6 +513,10 @@ footer {
         padding: 20px;
     }
 
+    header ol {
+        gap: 20px;
+    }
+
     #galleryMain {
         margin-top: 40px;
     }
