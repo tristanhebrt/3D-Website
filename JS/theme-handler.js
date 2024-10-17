@@ -26,6 +26,7 @@ const upArrowImage = document.getElementById('upArrowImage');
 const mailImage = document.getElementById('mailImage');
 const atImage = document.getElementById('@Image');
 const logoImage = document.getElementById('logoImage');
+const logoImage2 = document.getElementById('logoImage2');
 
 // Function to update the image sources based on the current theme
 function updateImageSources(theme) {
@@ -47,6 +48,11 @@ function updateImageSources(theme) {
     if (logoImage) {
         const logo = theme === 'light' ? lightThemeImages : darkThemeImages;
         logoImage.src = logo[3]; // logo in list
+    }
+
+    if (logoImage2) {
+        const logo = theme === 'light' ? lightThemeImages : darkThemeImages;
+        logoImage2.src = logo[3]; // logo in list
     }
 }
 
